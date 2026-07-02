@@ -1698,6 +1698,28 @@ nav {
 </head>
 <body>
 
+<!-- ══ شاشة البداية (Splash) ══ -->
+<div id="app_splash" style="position:fixed;inset:0;z-index:999999;background:#0F0F0F;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .5s ease;">
+  <img src="./logo.webp" alt="Smart Hand Score" style="width:min(60vw,260px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 20px rgba(212,168,67,0.3));animation:splashPop .6s ease-out;">
+  <div style="margin-top:14px;font-family:'Cairo',sans-serif;font-weight:900;font-size:15px;color:var(--gold);letter-spacing:0.5px;">Smart Hand Score</div>
+</div>
+<style>
+@keyframes splashPop {
+  0%   { opacity:0; transform:scale(0.85); }
+  100% { opacity:1; transform:scale(1); }
+}
+</style>
+<script>
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    var s = document.getElementById('app_splash');
+    if(!s) return;
+    s.style.opacity = '0';
+    setTimeout(function(){ s.remove(); }, 500);
+  }, 900);
+});
+</script>
+
 
 
 
@@ -1776,6 +1798,11 @@ nav {
 
 <!-- ══ صفحة ١: الرئيسية ══ -->
 <div class="page-section active" id="page_home" style="flex-direction:column;min-height:calc(100vh - 70px);">
+
+<!-- شعار التطبيق -->
+<div style="width:100%;display:flex;justify-content:center;padding:14px 0 4px;">
+  <img src="./logo.webp" alt="Smart Hand Score" style="height:88px;width:auto;object-fit:contain;filter:drop-shadow(0 4px 14px rgba(212,168,67,0.25));">
+</div>
 
 
 
@@ -2410,6 +2437,11 @@ function toggleInfoBox(){
 
   <!-- ══ غلاف موحّد لكل عناصر الصفحة بمسافات متناسقة ══ -->
   <div style="display:flex;flex-direction:column;gap:10px;width:100%;flex:1;box-sizing:border-box;">
+
+    <!-- شعار التطبيق -->
+    <div style="width:100%;display:flex;justify-content:center;padding:6px 0 0;">
+      <img src="./logo.webp" alt="Smart Hand Score" style="height:78px;width:auto;object-fit:contain;filter:drop-shadow(0 4px 14px rgba(212,168,67,0.25));">
+    </div>
 
     <!-- شريط الترحيب للمسجّل (مخفي افتراضياً) -->
     <div id="auth_welcome_bar" style="display:none;width:100%;margin-top:10px;">
