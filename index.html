@@ -1799,13 +1799,6 @@ window.addEventListener('load', function(){
 <!-- ══ صفحة ١: الرئيسية ══ -->
 <div class="page-section active" id="page_home" style="flex-direction:column;min-height:calc(100vh - 70px);">
 
-<!-- شعار التطبيق -->
-<div style="width:100%;display:flex;justify-content:center;padding:14px 0 4px;">
-  <img src="./logo.webp" alt="Smart Hand Score" style="height:88px;width:auto;object-fit:contain;filter:drop-shadow(0 4px 14px rgba(212,168,67,0.25));">
-</div>
-
-
-
 <!-- مربع التسجيل - ثابت مفتوح -->
 
 <!-- شريط الترحيب في الصفحة الرئيسية - يظهر عند تسجيل الدخول -->
@@ -1829,8 +1822,10 @@ window.addEventListener('load', function(){
   </div>
 </div>
 
-<!-- المسافة المرنة في الوسط — تدفع المربع والأزرار للأسفل -->
-<div style="flex:1;min-height:10px;"></div>
+<!-- شعار التطبيق: يملأ الفراغ في وسط الصفحة تحت رسالة الترحيب -->
+<div style="flex:1;min-height:10px;display:flex;align-items:center;justify-content:center;">
+  <img src="./logo.webp" alt="Smart Hand Score" style="width:min(68vw,300px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 22px rgba(212,168,67,0.3));">
+</div>
 
 <!-- فقرة تعريفية بالتطبيق — قابلة للطي -->
 <style>
@@ -2438,11 +2433,6 @@ function toggleInfoBox(){
   <!-- ══ غلاف موحّد لكل عناصر الصفحة بمسافات متناسقة ══ -->
   <div style="display:flex;flex-direction:column;gap:10px;width:100%;flex:1;box-sizing:border-box;">
 
-    <!-- شعار التطبيق -->
-    <div style="width:100%;display:flex;justify-content:center;padding:6px 0 0;">
-      <img src="./logo.webp" alt="Smart Hand Score" style="height:78px;width:auto;object-fit:contain;filter:drop-shadow(0 4px 14px rgba(212,168,67,0.25));">
-    </div>
-
     <!-- شريط الترحيب للمسجّل (مخفي افتراضياً) -->
     <div id="auth_welcome_bar" style="display:none;width:100%;margin-top:10px;">
       <div style="background:linear-gradient(135deg,rgba(212,168,67,0.10),rgba(212,168,67,0.03));border:1.5px solid rgba(212,168,67,0.5);border-radius:16px;padding:12px 18px;text-align:center;position:relative;overflow:hidden;box-shadow:0 2px 16px rgba(212,168,67,0.12);">
@@ -2465,8 +2455,10 @@ function toggleInfoBox(){
       </div>
     </div>
 
-    <!-- مساحة فارغة تدفع الأزرار إلى أسفل الشاشة -->
-    <div style="flex:1;min-height:12px;"></div>
+    <!-- شعار التطبيق: يملأ الفراغ في وسط الصفحة ويدفع الأزرار إلى الأسفل -->
+    <div style="flex:1;min-height:12px;display:flex;align-items:center;justify-content:center;">
+      <img src="./logo.webp" alt="Smart Hand Score" style="width:min(68vw,300px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 22px rgba(212,168,67,0.3));">
+    </div>
 
     <!-- أزرار الأسفل الموحّدة: تسجيل + إعدادات + دعم -->
     <div style="width:100%;display:flex;flex-direction:column;gap:10px;">
