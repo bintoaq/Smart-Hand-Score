@@ -1699,8 +1699,12 @@ nav {
 <body>
 
 <!-- ══ شاشة البداية (Splash) ══ -->
-<div id="app_splash" style="position:fixed;inset:0;z-index:999999;background:#0F0F0F;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s ease;">
-  <img src="./logo.webp" alt="Smart Hand Score" style="width:min(82vw,380px);height:auto;object-fit:contain;filter:drop-shadow(0 8px 26px rgba(212,168,67,0.35));animation:splashPop .9s ease-out, splashGlow 1.8s ease-in-out .9s infinite;">
+<div id="app_splash" style="position:fixed;inset:0;z-index:999999;background:#0F0F0F;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .7s ease;overflow:hidden;">
+  <div id="splash_radial" style="position:absolute;width:min(90vw,520px);height:min(90vw,520px);background:radial-gradient(circle, rgba(212,168,67,0.22) 0%, rgba(212,168,67,0.08) 45%, transparent 72%);border-radius:50%;animation:splashRadial 2.6s ease-in-out infinite;"></div>
+  <div style="position:relative;width:min(82vw,380px);overflow:hidden;border-radius:12px;">
+    <img src="./logo.webp" alt="Smart Hand Score" style="position:relative;z-index:1;width:100%;height:auto;object-fit:contain;filter:drop-shadow(0 8px 26px rgba(212,168,67,0.35));animation:splashPop .9s ease-out, splashGlow 1.8s ease-in-out .9s infinite;">
+    <div id="splash_shine" style="position:absolute;z-index:2;top:0;left:-160%;width:55%;height:100%;background:linear-gradient(115deg,transparent,rgba(255,255,255,0.45),transparent);transform:skewX(-18deg);animation:splashShine 2.6s ease-in-out 1.1s infinite;pointer-events:none;"></div>
+  </div>
 </div>
 <!-- نغمة الترحيب: ضع ملف الصوت باسم welcome-sound.mp3 بجانب index.html -->
 <audio id="splash_sound" src="./welcome-sound.mp3" preload="auto"></audio>
@@ -1710,13 +1714,34 @@ nav {
   60%  { opacity:1; transform:scale(1.05); }
   100% { opacity:1; transform:scale(1); }
 }
-@keyframes splashFadeIn {
-  0%   { opacity:0; transform:translateY(6px); }
-  100% { opacity:1; transform:translateY(0); }
-}
 @keyframes splashGlow {
   0%, 100% { filter:drop-shadow(0 8px 26px rgba(212,168,67,0.35)); }
   50%      { filter:drop-shadow(0 8px 34px rgba(212,168,67,0.6)); }
+}
+@keyframes splashRadial {
+  0%, 100% { opacity:.55; transform:scale(0.92); }
+  50%      { opacity:1;   transform:scale(1.06); }
+}
+@keyframes splashShine {
+  0%   { left:-160%; }
+  45%  { left:160%; }
+  100% { left:160%; }
+}
+@keyframes logoGlowPulse {
+  0%, 100% { filter:drop-shadow(0 6px 22px rgba(212,168,67,0.3));  transform:scale(1); }
+  50%      { filter:drop-shadow(0 6px 30px rgba(212,168,67,0.55)); transform:scale(1.015); }
+}
+.app-logo-glow { animation:logoGlowPulse 3s ease-in-out infinite; }
+.typewriter-cursor::after {
+  content:'|';
+  display:inline-block;
+  margin-inline-start:2px;
+  color:var(--gold);
+  animation:twBlink .9s steps(1) infinite;
+}
+@keyframes twBlink {
+  0%, 49%  { opacity:1; }
+  50%,100% { opacity:0; }
 }
 </style>
 <script>
@@ -1729,8 +1754,27 @@ window.addEventListener('load', function(){
     var s = document.getElementById('app_splash');
     if(!s) return;
     s.style.opacity = '0';
-    setTimeout(function(){ s.remove(); }, 600);
-  }, 2200);
+    setTimeout(function(){ s.remove(); }, 700);
+  }, 3200);
+});
+
+// تأثير الكتابة حرف حرف لجملة الترحيب بالزائر (الرئيسية وصفحة الحساب)
+function runTypewriter(id, text, speed){
+  var el = document.getElementById(id);
+  if(!el) return;
+  el.textContent = '';
+  var i = 0;
+  (function step(){
+    if(i <= text.length){
+      el.textContent = text.slice(0, i);
+      i++;
+      setTimeout(step, speed);
+    }
+  })();
+}
+document.addEventListener('DOMContentLoaded', function(){
+  runTypewriter('home_guest_typewriter', 'مرحباً بك في قيد الهاند الذكي', 55);
+  runTypewriter('auth_guest_typewriter', 'مرحباً بك', 55);
 });
 </script>
 
@@ -1826,19 +1870,16 @@ window.addEventListener('load', function(){
   </div>
 </div>
 <!-- ترحيب الزائر - يظهر عند عدم تسجيل الدخول -->
-<div id="home_guest_bar" style="width:100%;padding:10px 0 0;">
-  <div style="background:linear-gradient(135deg,rgba(255,255,255,0.07),rgba(255,255,255,0.03));border:1px solid rgba(255,255,255,0.18);border-radius:14px;padding:13px 16px;position:relative;text-align:center;">
-    <div id="home_wave_hand" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:28px;display:inline-block;animation:waveHand 2.2s ease-in-out infinite;transform-origin:bottom right;">👋</div>
-    <div>
-      <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:14px;color:var(--gold);margin-bottom:2px;">مرحباً بك في قيد الهاند الذكي</div>
-      <div style="font-family:'Tajawal',sans-serif;font-size:12px;color:#aaa;line-height:1.5;">سجّل دخولك لحفظ جولاتك ومتابعة نتائجك</div>
-    </div>
+<div id="home_guest_bar" style="width:100%;padding:14px 0 0;text-align:center;">
+  <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:15px;color:var(--gold);margin-bottom:4px;min-height:20px;">
+    <span id="home_guest_typewriter" class="typewriter-cursor"></span>
   </div>
+  <div style="font-family:'Tajawal',sans-serif;font-size:12px;color:#aaa;line-height:1.5;">سجّل دخولك لحفظ جولاتك ومتابعة نتائجك</div>
 </div>
 
 <!-- شعار التطبيق: حجم وموقع ثابتان، ما يتأثر بفتح/قفل الفقرة تحته -->
 <div style="width:100%;padding:28px 0;display:flex;justify-content:center;">
-  <img src="./logo.webp" alt="Smart Hand Score" style="width:min(92vw,460px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 22px rgba(212,168,67,0.3));">
+  <img src="./logo.webp" alt="Smart Hand Score" class="app-logo-glow" style="width:min(92vw,460px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 22px rgba(212,168,67,0.3));">
 </div>
 
 <!-- فقرة تعريفية بالتطبيق — قابلة للطي -->
@@ -2459,19 +2500,16 @@ function toggleInfoBox(){
     </div>
 
     <!-- مربع الترحيب للزائر -->
-    <div id="auth_guest_bar" style="width:100%;margin-top:10px;">
-      <div style="background:linear-gradient(135deg,rgba(255,255,255,0.07),rgba(255,255,255,0.03));border:1px solid rgba(255,255,255,0.18);border-radius:14px;padding:13px 16px 13px 48px;position:relative;text-align:center;box-sizing:border-box;">
-        <div id="home_wave_hand" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:28px;display:inline-block;animation:waveHand 2.2s ease-in-out infinite;transform-origin:bottom right;">👋</div>
-        <div>
-          <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:14px;color:var(--gold);margin-bottom:2px;">مرحباً بك</div>
-          <div style="font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;color:#aaa;line-height:1.5;">سجّل دخولك أو أنشئ حساباً للوصول إلى كامل الميزات</div>
-        </div>
+    <div id="auth_guest_bar" style="width:100%;margin-top:14px;text-align:center;">
+      <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:15px;color:var(--gold);margin-bottom:4px;min-height:20px;">
+        <span id="auth_guest_typewriter" class="typewriter-cursor"></span>
       </div>
+      <div style="font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;color:#aaa;line-height:1.5;">سجّل دخولك أو أنشئ حساباً للوصول إلى كامل الميزات</div>
     </div>
 
     <!-- شعار التطبيق: يملأ الفراغ في وسط الصفحة ويدفع الأزرار إلى الأسفل -->
     <div style="flex:1;min-height:12px;display:flex;align-items:center;justify-content:center;">
-      <img src="./logo.webp" alt="Smart Hand Score" style="width:min(92vw,440px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 22px rgba(212,168,67,0.3));">
+      <img src="./logo.webp" alt="Smart Hand Score" class="app-logo-glow" style="width:min(92vw,440px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 22px rgba(212,168,67,0.3));">
     </div>
 
     <!-- أزرار الأسفل الموحّدة: تسجيل + إعدادات + دعم -->
