@@ -491,7 +491,8 @@ button.btn-app-gold:disabled{
 .sm-player-inp{font-size:16px;padding:8px 10px;-webkit-text-size-adjust:100%;}
 /* ══ AUTOCOMPLETE ══ */
 .ac-wrap{position:relative;width:100%;}
-.ac-dropdown{position:fixed;background:#1c1c1c;border:1px solid var(--gold);border-radius:10px;z-index:99999;max-height:200px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,0.8);display:none;min-width:120px;}
+.ac-dropdown{position:absolute;top:calc(100% + 4px);left:0;right:0;background:#1c1c1c;border:1px solid var(--gold);border-radius:10px;z-index:400;max-height:200px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,0.8);display:none;box-sizing:border-box;}
+.ac-dropdown.ac-above{top:auto;bottom:calc(100% + 4px);}
 .ac-dropdown.open{display:block;}
 .ac-item{padding:10px 12px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:600;color:var(--text);cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:8px;transition:background 0.15s;}
 .ac-item:last-child{border-bottom:none;}.ac-item:active{background:rgba(212,168,67,0.18);}
@@ -2231,7 +2232,7 @@ function toggleInfoBox(){
 <div id="results_data_section">
 <!-- شخصية ترفع الكأس (تظهر فقط بعد تسجيل الدخول) -->
 <div style="width:100%;display:flex;justify-content:center;padding:6px 0 14px;">
-  <img src="./results-trophy.png" alt="" style="width:min(72vw,300px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 20px rgba(212,168,67,0.3));">
+  <img src="./results-trophy.png" alt="" class="app-logo-glow" style="width:min(72vw,300px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 20px rgba(212,168,67,0.3));">
 </div>
 
 <div style="display:flex;gap:10px;margin-bottom:16px;">
@@ -3919,23 +3920,15 @@ function acPositionDropdown(idx) {
   const inp = document.getElementById(`pname_${idx}`);
   const dd = document.getElementById(`ac_${idx}`);
   if (!inp || !dd) return;
-  // نحسب الموضع بعد استقرار الـ keyboard على iOS
+  // نحسب فقط هل نعرض القائمة أعلى الحقل أو أسفله — الموضع الفعلي مرتبط بالحقل عبر CSS
   requestAnimationFrame(function(){
     const rect = inp.getBoundingClientRect();
-    // إذا الحقل فوق منتصف الشاشة → اعرض القائمة تحته، وإلا فوقه
     const spaceBelow = window.innerHeight - rect.bottom;
     if(spaceBelow < 120 && rect.top > 120){
-      // اعرض فوق الحقل
-      dd.style.bottom = 'auto';
-      const ddH = Math.min(200, spaceBelow < 60 ? rect.top - 8 : 200);
-      dd.style.maxHeight = ddH + 'px';
-      dd.style.top = (rect.top - ddH - 4) + 'px';
+      dd.classList.add('ac-above');
     } else {
-      dd.style.top = (rect.bottom + 4) + 'px';
-      dd.style.maxHeight = '200px';
+      dd.classList.remove('ac-above');
     }
-    dd.style.left = rect.left + 'px';
-    dd.style.width = rect.width + 'px';
   });
 }
 
@@ -7196,15 +7189,18 @@ function rtSubmit(){
 
 // حماية إضافية: إذا رجع المستخدم من تطبيق البريد ولم تُنفَّذ المهلة أعلاه
 // (لأن المتصفح يوقف المؤقتات أثناء الانتقال لتطبيق آخر)، نعيد ضبط اللوحة فوراً
-document.addEventListener('visibilitychange', function(){
-  if(document.visibilityState === 'visible'){
-    var doneEl = document.getElementById('rt_done');
-    if(doneEl && doneEl.style.display === 'block'){
-      closePanel();
-      rtReset();
-    }
+function rtHideDoneIfStuck(){
+  var doneEl = document.getElementById('rt_done');
+  if(doneEl && doneEl.style.display === 'block'){
+    closePanel();
+    rtReset();
   }
+}
+document.addEventListener('visibilitychange', function(){
+  if(document.visibilityState === 'visible') rtHideDoneIfStuck();
 });
+window.addEventListener('focus', rtHideDoneIfStuck);
+window.addEventListener('pageshow', rtHideDoneIfStuck);
 
 function rtReset(){
   rtCurrentStar = 0;
