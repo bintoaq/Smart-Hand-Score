@@ -308,7 +308,7 @@ button.btn-app-gold:disabled{
   background:linear-gradient(135deg,rgba(212,168,67,0.22),rgba(212,168,67,0.10));
   border:2px solid rgba(212,168,67,0.65);
   border-radius:14px;
-  padding:13px 6px;
+  padding:10px 8px;
   display:flex;flex-direction:column;align-items:center;gap:5px;
   cursor:pointer;
   box-shadow:0 2px 12px rgba(212,168,67,0.18);
@@ -937,8 +937,8 @@ button.btn-app-gold:disabled{
   font-family: 'Cairo', sans-serif;
   border: 1px solid rgba(212,168,67,0.45);
 }
-.sub-table th:first-child { text-align: right; padding-right: 10px; background: transparent; color: #aaa; font-size: 10.5px; }
-.sub-table th.free-col { color: #111; background: rgba(220,220,220,0.88); }
+.sub-table th:first-child { text-align: right; padding-right: 10px; background: #ffffff; color: #000000; font-size: 10.5px; }
+.sub-table th.free-col { color: #000000; background: #8a8a8a; }
 .sub-table th.paid-col {
   color: #0F0F0F;
   background: linear-gradient(135deg, #d4a843, #f2ce7c, #d4a843);
@@ -986,6 +986,7 @@ button.btn-app-gold:disabled{
   color: var(--text);
 }
 .sub-table td:first-child { text-align: right; padding-right: 10px; color: #ddd; font-weight: 700; font-size: 10.5px; }
+.sub-table td:nth-child(2) { color: #9a9a9a; }
 .sub-table tr:nth-child(even) td { background: var(--card2); }
 
 /* ══ HIND LIST EDITOR ══ */
@@ -1767,7 +1768,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.1</span>
+        <span style="font-size:10px;color:var(--red);">V5.2</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1792,11 +1793,11 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.1</span>
+        <span style="font-size:10px;color:var(--red);">V5.2</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
-    <button class="auth-modal-close" onclick="document.getElementById('auth_terms_modal').classList.add('hidden')">إغلاق</button>
+    <button class="auth-modal-close" onclick="SFX.del();document.getElementById('auth_terms_modal').classList.add('hidden')">إغلاق</button>
   </div>
 </div>
 
@@ -1813,11 +1814,11 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.1</span>
+        <span style="font-size:10px;color:var(--red);">V5.2</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
-    <button class="auth-modal-close" onclick="document.getElementById('auth_ip_modal').classList.add('hidden')">إغلاق</button>
+    <button class="auth-modal-close" onclick="SFX.del();document.getElementById('auth_ip_modal').classList.add('hidden')">إغلاق</button>
   </div>
 </div>
 
@@ -1849,7 +1850,7 @@ window.addEventListener('load', function(){
 <div style="text-align:center;padding:6px 0 22px;">
   <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
   <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-  <span style="font-size:10px;color:var(--red);">V5.1</span>
+  <span style="font-size:10px;color:var(--red);">V5.2</span>
   <span style="font-size:10px;color:var(--red);"> · 2026</span>
 </div>
 
@@ -1915,7 +1916,7 @@ window.addEventListener('load', function(){
 }
 /* الجزء الثابت — يظهر دائماً */
 .info-box-closed {
-  padding: 16px 16px 12px;
+  padding: 14px 14px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1989,7 +1990,7 @@ window.addEventListener('load', function(){
   max-height: 1200px;
 }
 .info-box-content-inner {
-  padding: 0 14px 16px;
+  padding: 0 14px 14px;
   border-top: 1px solid rgba(212,168,67,0.18);
 }
 /* مميزات */
@@ -2083,10 +2084,10 @@ function toggleInfoBox(){
   </div>
 </div>
 
-<div style="display:flex;flex-direction:column;gap:10px;padding:0 0 6px;margin-top:18px;" id="home_btn_grid">
+<div style="display:flex;flex-direction:column;gap:8px;padding:0 0 6px;margin-top:18px;" id="home_btn_grid">
 
   <!-- مميزات النسخة المدفوعة -->
-  <button onclick="openPanel('subscribe')" style="width:100%;padding:13px 16px;background:linear-gradient(135deg,rgba(212,168,67,0.22),rgba(212,168,67,0.03));border:2px solid rgba(212,168,67,0.65);border-radius:14px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:900;color:var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 2px 10px rgba(212,168,67,0.18);transition:all .2s;position:relative;overflow:hidden;" class="gold-btn-press btn-premium-fx">
+  <button onclick="openPanel('subscribe')" style="width:100%;padding:10px 8px;background:linear-gradient(135deg,rgba(212,168,67,0.22),rgba(212,168,67,0.03));border:2px solid rgba(212,168,67,0.65);border-radius:14px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:900;color:var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 2px 10px rgba(212,168,67,0.18);transition:all .2s;position:relative;overflow:hidden;" class="gold-btn-press btn-premium-fx">
     <span style="font-size:16px;">✨</span>
     مميزات النسخة المدفوعة
   </button>
@@ -2433,7 +2434,7 @@ function toggleInfoBox(){
             <div style="font-family:'Tajawal',sans-serif;font-size:7px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
             <div style="font-family:'Tajawal',sans-serif;font-size:7px;color:rgba(255,255,255,0.5);margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
             <div style="height:1px;background:rgba(200,168,75,0.5);margin-bottom:3px;"></div>
-            <div style="font-size:7px;color:var(--red);">V5.1 · 2026</div>
+            <div style="font-size:7px;color:var(--red);">V5.2 · 2026</div>
           </div>
 
           <!-- وسط: شعار فقط -->
@@ -2483,7 +2484,7 @@ function toggleInfoBox(){
       <div style="text-align:center;">
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.1</span>
+        <span style="font-size:10px;color:var(--red);">V5.2</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -3613,7 +3614,7 @@ function toggleInfoBox(){
           <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:13px;color:var(--gold);margin-bottom:3px;">قيد الهاند الذكي</div>
           <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
           <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-          <span class="cr-version" style="font-size:10px;color:var(--red);">V5.1</span>
+          <span class="cr-version" style="font-size:10px;color:var(--red);">V5.2</span>
           <span style="font-size:10px;color:var(--red);"> · 2026</span>
         </div>
       </div>
@@ -7169,26 +7170,41 @@ function rtSubmit(){
   localStorage.setItem('hc_ratings', JSON.stringify(ratings));
   localStorage.setItem('hc_last_rating', JSON.stringify({ stars: stars, date: date }));
 
-  // إرسال بالإيميل
+  // إظهار شاشة الشكر فوراً — قبل أي تنقّل — حتى يراها المستخدم فعلياً
+  SFX.win();
+  var panelBody = document.querySelector('#rating_panel .panel-body');
+  Array.from(panelBody.children).forEach(function(c){ c.style.display = 'none'; });
+  document.getElementById('rt_done').style.display = 'block';
+
+  // تجهيز رابط الإرسال بالإيميل
   var tagStr = tags.length ? tags.join('، ') : 'لم يتم التحديد';
-  var body = encodeURIComponent(
+  var mailBody = encodeURIComponent(
     'التقييم: ' + stars + ' نجوم\n' +
     'الجوانب: ' + tagStr + '\n' +
     'التعليق: ' + (comment || 'لا يوجد') + '\n' +
     'التاريخ: ' + date + '\n\n' +
-    'HandCards V5.1'
+    'HandCards V5.2'
   );
-  var subject = encodeURIComponent('تقييم HandCards V5.1 — ' + stars + ' نجوم');
-  window.location.href = 'mailto:sultan@handcards.app?subject=' + subject + '&body=' + body;
+  var subject = encodeURIComponent('تقييم HandCards V5.2 — ' + stars + ' نجوم');
+  var mailtoLink = 'mailto:sultan@handcards.app?subject=' + subject + '&body=' + mailBody;
 
-  // إظهار شاشة النجاح
-  SFX.win();
-  var body = document.querySelector('#rating_panel .panel-body');
-  Array.from(body.children).forEach(function(c){ c.style.display = 'none'; });
-  document.getElementById('rt_done').style.display = 'block';
+  // الانتقال للبريد يتأخر قليلاً حتى يشاهد المستخدم رسالة الشكر أولاً
+  setTimeout(function(){ window.location.href = mailtoLink; }, 1400);
 
   setTimeout(function(){ closePanel(); rtReset(); }, 2800);
 }
+
+// حماية إضافية: إذا رجع المستخدم من تطبيق البريد ولم تُنفَّذ المهلة أعلاه
+// (لأن المتصفح يوقف المؤقتات أثناء الانتقال لتطبيق آخر)، نعيد ضبط اللوحة فوراً
+document.addEventListener('visibilitychange', function(){
+  if(document.visibilityState === 'visible'){
+    var doneEl = document.getElementById('rt_done');
+    if(doneEl && doneEl.style.display === 'block'){
+      closePanel();
+      rtReset();
+    }
+  }
+});
 
 function rtReset(){
   rtCurrentStar = 0;
@@ -7344,7 +7360,7 @@ document.getElementById('settings_panel').addEventListener('transitionend', _upd
 
 <script>
 /* ═══════════════════════════════════════════════
-   AUTH SYSTEM — HandCards V5.1
+   AUTH SYSTEM — HandCards V5.2
    البيانات تُحفظ في localStorage تحت مفتاح hc_auth
 ═══════════════════════════════════════════════ */
 
@@ -7949,6 +7965,7 @@ function authShowPrivacy() {
   if (m) m.classList.remove('hidden');
 }
 function authHidePrivacy() {
+  SFX.del();
   const m = document.getElementById('auth_privacy_modal');
   if (m) m.classList.add('hidden');
 }
@@ -8451,7 +8468,7 @@ function supSubmit(){
 
   // إرسال عبر mailto كاحتياطي فعّال
   var typeLabel = {'technical':'دعم فني','suggestion':'مقترح','note':'ملاحظة','complaint':'شكوى'}[type] || 'عام';
-  var subject = encodeURIComponent('طلب دعم HandCards V5.1 — ' + typeLabel);
+  var subject = encodeURIComponent('طلب دعم HandCards V5.2 — ' + typeLabel);
   var body = encodeURIComponent(
     'الاسم: ' + name + '\n' +
     'البريد: ' + email + '\n' +
@@ -8515,7 +8532,7 @@ function shareReport(){
 
   lines.push('');
   lines.push('─────────────────────');
-  lines.push('HandCards V5.1 · قيد الهاند الذكي');
+  lines.push('HandCards V5.2 · قيد الهاند الذكي');
 
   var text = lines.join('\n');
 
@@ -8724,7 +8741,7 @@ function shareCertText(){
     intro + ' بأن اللاعب ' + fullName + '\n' +
     bodyText + '\n\n' +
     'قيد الهاند الذكي · جميع الحقوق محفوظة\n' +
-    'تصميم سلطان بن طوق المري · V5.1 · 2026';
+    'تصميم سلطان بن طوق المري · V5.2 · 2026';
 
   if(navigator.share){
     navigator.share({ title: 'شهادة محترف — ' + fullName, text: text })
