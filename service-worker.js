@@ -1,6 +1,6 @@
 /* Smart Hand Score — Service Worker */
 /* عند كل رفع نسخة جديدة من التطبيق: غيّر رقم CACHE أدناه (مثلاً v4.10) حتى تُمسح النسخة القديمة من أجهزة المستخدمين تلقائياً */
-const CACHE = 'smart-hand-score-v5.2';
+const CACHE = 'smart-hand-score-v5.2.1';
 
 const APP_SHELL = [
   './',
@@ -8,6 +8,7 @@ const APP_SHELL = [
   './manifest.json',
   './logo.webp',
   './math-logo.png',
+  './character-book.png',
   './results-trophy.png',
   './icon-192.png',
   './icon-512.png',
@@ -42,10 +43,15 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET') return;
 
-  // للتنقل (فتح الصفحة): جرّب الشبكة أولاً عشان يوصل آخر تحديث، ولو ما فيه اتصال ارجع للنسخة المخزنة
-  if (e.request.mode === 'navigate') {
+  // للتنقل أو تحميل الصفحة نفسها: جرّب الشبكة أولاً عشان يوصل آخر تحديث، ولو ما فيه اتصال ارجع للنسخة المخزنة
+  const isPageRequest = e.request.mode === 'navigate' ||
+    e.request.destination === 'document' ||
+    e.request.url.endsWith('/index.html') ||
+    e.request.url.endsWith('/');
+
+  if (isPageRequest) {
     e.respondWith(
-      fetch(e.request)
+      fetch(e.request, { cache: 'no-store' })
         .then((res) => {
           const copy = res.clone();
           caches.open(CACHE).then((c) => c.put('./index.html', copy));
