@@ -1826,7 +1826,7 @@ window.addEventListener('load', function(){
 <div class="wrap">
 
 <!-- ══ صفحة ١: الرئيسية ══ -->
-<div class="page-section active" id="page_home" style="flex-direction:column;padding-bottom:calc(24px + env(safe-area-inset-bottom, 0px));">
+<div class="page-section active" id="page_home" style="flex-direction:column;">
 
 <!-- مربع التسجيل - ثابت مفتوح -->
 
@@ -2454,7 +2454,7 @@ function toggleInfoBox(){
     </div><!-- end cert_card -->
 
     <!-- زر المشاركة -->
-    <button onclick="shareCertText()" style="width:100%;margin-top:12px;padding:14px;border:none;border-radius:10px;font-family:'Cairo',sans-serif;font-weight:900;font-size:14px;cursor:pointer;background:linear-gradient(135deg,#c8a84b,#8b6914);color:#0F0F0F;box-shadow:0 4px 20px rgba(200,168,75,0.35);">📤 مشاركة الشهادة</button>
+    <button onclick="shareCertImage()" style="width:100%;margin-top:12px;padding:14px;border:none;border-radius:10px;font-family:'Cairo',sans-serif;font-weight:900;font-size:14px;cursor:pointer;background:linear-gradient(135deg,#c8a84b,#8b6914);color:#0F0F0F;box-shadow:0 4px 20px rgba(200,168,75,0.35);">📤 مشاركة الشهادة</button>
   </div>
 </div>
 
@@ -8695,7 +8695,82 @@ function closeCertModal(){
   if(el) el.style.display = 'none';
 }
 
-/* ── مشاركة الشهادة ── */
+/* ── مشاركة الشهادة كصورة ── */
+function shareCertImage(){
+  var stats   = buildStats();
+  var players = Object.values(stats);
+  if(!players.length){ showToast('لا توجد بيانات'); return; }
+
+  var achieveSel = document.getElementById('cert_achievement');
+  var suffixEl   = document.getElementById('cert_name_suffix');
+  var tab    = achieveSel ? achieveSel.value : 'pct';
+  var suffix = suffixEl   ? suffixEl.value.trim()  : '';
+
+  var winner;
+  if(tab === 'wins'){
+    var withBest2 = players.filter(function(p){ return p.bestScore !== null; });
+    if(!withBest2.length) withBest2 = players;
+    winner = withBest2.slice().sort(function(a,b){ return (a.bestScore||0)-(b.bestScore||0); })[0];
+  } else {
+    winner = players.filter(function(p){ return p.wins > 0; })
+      .slice().sort(function(a,b){
+        var rA = a.wins/a.sessions, rB = b.wins/b.sessions;
+        if(rB !== rA) return rB - rA;
+        if(b.wins !== a.wins) return b.wins - a.wins;
+        return a.name.localeCompare(b.name);
+      })[0];
+    if(!winner) winner = players[0];
+  }
+  var fullName = winner.name + (suffix ? ' ' + suffix : '');
+
+  var certEl = document.getElementById('cert_card');
+  if(!certEl || typeof html2canvas === 'undefined'){
+    showToast('⚠️ تعذّر إنشاء صورة الشهادة');
+    return;
+  }
+
+  showToast('⏳ جاري تجهيز الصورة...');
+
+  html2canvas(certEl, {
+    backgroundColor: '#111111',
+    scale: 3,
+    useCORS: true
+  }).then(function(canvas){
+    canvas.toBlob(function(blob){
+      if(!blob){ showToast('⚠️ تعذّر إنشاء صورة الشهادة'); return; }
+      var fileName = 'شهادة-محترف-' + fullName.replace(/\s+/g,'-') + '.png';
+      var file = new File([blob], fileName, { type: 'image/png' });
+
+      if(navigator.canShare && navigator.canShare({ files:[file] })){
+        navigator.share({
+          files: [file],
+          title: 'شهادة محترف — ' + fullName,
+          text: 'شهادة محترف من قيد الهاند الذكي 🏆'
+        }).catch(function(err){
+          if(err && err.name !== 'AbortError') downloadCertImage(blob, fileName);
+        });
+      } else {
+        downloadCertImage(blob, fileName);
+      }
+    }, 'image/png');
+  }).catch(function(){
+    showToast('⚠️ تعذّر إنشاء صورة الشهادة');
+  });
+}
+
+function downloadCertImage(blob, fileName){
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = fileName;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
+  showToast('✅ تم حفظ صورة الشهادة');
+}
+
+/* ── مشاركة الشهادة (نص احتياطي) ── */
 function shareCertText(){
   var stats   = buildStats();
   var players = Object.values(stats);
