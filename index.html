@@ -123,6 +123,7 @@ body{background:var(--dark);color:var(--text);font-family:'Tajawal',sans-serif;m
 .page-section.active { display: block !important; padding-bottom: 0; }
 #page_home.active { display: flex !important; }
 #page_auth.active { display: flex !important; flex-direction: column; }
+#page_sessions.active { display: flex !important; flex-direction: column; }
 #page_sessions { display: none; }
 #page_sessions.active { display: block !important; }
 
@@ -1769,7 +1770,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.3.2</span>
+        <span style="font-size:10px;color:var(--red);">V5.3.3</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1794,7 +1795,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.3.2</span>
+        <span style="font-size:10px;color:var(--red);">V5.3.3</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1815,7 +1816,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.3.2</span>
+        <span style="font-size:10px;color:var(--red);">V5.3.3</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1850,7 +1851,7 @@ window.addEventListener('load', function(){
   <div style="text-align:center;">
     <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
     <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-    <span style="font-size:10px;color:var(--red);">V5.3.2</span>
+    <span style="font-size:10px;color:var(--red);">V5.3.3</span>
     <span style="font-size:10px;color:var(--red);"> · 2026</span>
   </div>
 </div>
@@ -2291,14 +2292,14 @@ function toggleInfoBox(){
 </div><!-- end results_data_section -->
 
 <!-- رسالة الزائر في النتائج -->
-<div id="results_guest_msg" style="display:none;text-align:center;padding:40px 0;">
-  <div style="font-size:36px;margin-bottom:12px;">🔒</div>
+<div id="results_guest_msg" style="display:none;text-align:center;padding:24px 0 40px;">
+  <div style="width:100%;display:flex;justify-content:center;padding-bottom:10px;">
+    <img src="./character-book.png" alt="" style="width:min(62vw,260px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 20px rgba(212,168,67,0.25));">
+  </div>
+  <div style="font-size:32px;margin-bottom:10px;">🔒</div>
   <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:16px;color:var(--gold);margin-bottom:8px;">سجّل دخولك لعرض النتائج</div>
   <div style="font-family:'Tajawal',sans-serif;font-size:13px;color:#888;margin-bottom:20px;line-height:1.7;">لوحة المحترفين والإحصائيات متاحة للمسجّلين فقط</div>
   <button onclick="goToAuthLogin()" class="gold-btn-press btn-premium-fx" style="background:linear-gradient(135deg,rgba(212,168,67,0.22),rgba(212,168,67,0.10));border:2px solid rgba(212,168,67,0.65);border-radius:14px;padding:12px 28px;color:var(--gold);font-family:'Cairo',sans-serif;font-weight:900;font-size:14px;cursor:pointer;position:relative;overflow:hidden;">تسجيل الدخول</button>
-  <div style="width:100%;display:flex;justify-content:center;padding-top:22px;">
-    <img src="./character-book.png" alt="" style="width:min(80vw,340px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 20px rgba(212,168,67,0.25));">
-  </div>
 </div>
 
 </div><!-- end page_results -->
@@ -2435,7 +2436,7 @@ function toggleInfoBox(){
             <div style="font-family:'Tajawal',sans-serif;font-size:7px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
             <div style="font-family:'Tajawal',sans-serif;font-size:7px;color:rgba(255,255,255,0.5);margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
             <div style="height:1px;background:rgba(200,168,75,0.5);margin-bottom:3px;"></div>
-            <div style="font-size:7px;color:var(--red);">V5.3.2 · 2026</div>
+            <div style="font-size:7px;color:var(--red);">V5.3.3 · 2026</div>
           </div>
 
           <!-- وسط: شعار فقط -->
@@ -2485,7 +2486,7 @@ function toggleInfoBox(){
       <div style="text-align:center;">
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.3.2</span>
+        <span style="font-size:10px;color:var(--red);">V5.3.3</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -2635,12 +2636,15 @@ function toggleInfoBox(){
 </div><!-- end page_auth -->
 
 <!-- ══ صفحة السجل ══ -->
-<div class="page-section" id="page_sessions">
+<div class="page-section" id="page_sessions" style="display:flex;flex-direction:column;box-sizing:border-box;min-height:calc(100vh - 84px - env(safe-area-inset-bottom, 0px));min-height:calc(100dvh - 84px - env(safe-area-inset-bottom, 0px));padding-bottom:10px;">
 <div class="hdr"><div class="hdr-title">السجل</div><div class="hdr-line"></div></div>
 <div class="session-title" id="session_title_display_sess" style="display:none;padding-bottom:10px;"></div>
 
 <!-- محتوى السجل للمسجّل -->
-<div id="sessions_data_section">
+<div id="sessions_data_section" style="display:flex;flex-direction:column;flex:1;">
+  <div style="width:100%;display:flex;justify-content:center;padding:0 0 10px;">
+    <img src="./character-book.png" alt="" style="width:min(50vw,200px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 20px rgba(212,168,67,0.25));">
+  </div>
   <div style="background:var(--card);border-radius:18px;padding:14px 10px 8px;margin-bottom:10px;" class="gold-frame">
     <div class="gf-corner gf-tr"></div><div class="gf-corner gf-tl"></div>
     <div class="gf-corner gf-br"></div><div class="gf-corner gf-bl"></div>
@@ -2702,14 +2706,14 @@ function toggleInfoBox(){
 </div><!-- end sessions_data_section -->
 
 <!-- رسالة الزائر في السجل -->
-<div id="sessions_guest_msg" style="display:none;text-align:center;padding:40px 0;">
-  <div style="font-size:36px;margin-bottom:12px;">🔒</div>
+<div id="sessions_guest_msg" style="display:none;flex:1;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 0 10px;">
+  <div style="width:100%;display:flex;justify-content:center;padding-bottom:10px;">
+    <img src="./character-book.png" alt="" style="width:min(62vw,260px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 20px rgba(212,168,67,0.25));">
+  </div>
+  <div style="font-size:32px;margin-bottom:10px;">🔒</div>
   <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:16px;color:var(--gold);margin-bottom:8px;">سجّل دخولك لعرض السجل</div>
   <div style="font-family:'Tajawal',sans-serif;font-size:13px;color:#888;margin-bottom:20px;line-height:1.7;">جولاتك المحفوظة وتقاريرك متاحة للمسجّلين فقط</div>
   <button onclick="goToAuthLogin()" class="gold-btn-press btn-premium-fx" style="background:linear-gradient(135deg,rgba(212,168,67,0.22),rgba(212,168,67,0.10));border:2px solid rgba(212,168,67,0.65);border-radius:14px;padding:12px 28px;color:var(--gold);font-family:'Cairo',sans-serif;font-weight:900;font-size:14px;cursor:pointer;position:relative;overflow:hidden;">تسجيل الدخول</button>
-  <div style="width:100%;display:flex;justify-content:center;padding-top:22px;">
-    <img src="./character-book.png" alt="" style="width:min(80vw,340px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 20px rgba(212,168,67,0.25));">
-  </div>
 </div>
 
 </div><!-- end page_sessions -->
@@ -3560,6 +3564,14 @@ function toggleInfoBox(){
       <div id="sup_form_body" style="display:none;padding:0 14px 16px;">
 
         <!-- الاسم -->
+        <style>
+        #sup_name:-webkit-autofill, #sup_email:-webkit-autofill{
+          -webkit-box-shadow:0 0 0 1000px var(--inp) inset !important;
+          -webkit-text-fill-color:var(--text) !important;
+          caret-color:var(--text);
+          transition:background-color 9999s ease-in-out 0s;
+        }
+        </style>
         <div class="setting-row-label" style="color:var(--gold);margin-bottom:6px;text-align:right;">الاسم</div>
         <input id="sup_name" type="text" placeholder="اسمك" maxlength="40"
           style="width:100%;background:var(--inp);color:var(--text);border:1.5px solid var(--inp-border);border-radius:10px;padding:11px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;text-align:right;direction:rtl;margin-bottom:12px;min-height:44px;box-sizing:border-box;color-scheme:dark;">
@@ -3572,7 +3584,7 @@ function toggleInfoBox(){
         <!-- نوع الدعم - dropdown -->
         <div class="setting-row-label" style="color:var(--gold);margin-bottom:8px;text-align:right;">نوع الطلب <span style="color:var(--muted);font-size:11px;">(اختياري)</span></div>
         <div style="position:relative;margin-bottom:12px;">
-          <select id="sup_type" onchange="this._disp.textContent=this.options[this.selectedIndex].text"
+          <select id="sup_type" onchange="var d=document.getElementById('sup_type_disp');d.textContent=this.options[this.selectedIndex].text;d.style.color=this.value?'var(--text)':'var(--muted)';"
             style="display:none;">
             <option value="">— اختر نوع الطلب</option>
             <option value="technical">🔧 دعم فني</option>
@@ -3623,7 +3635,7 @@ function toggleInfoBox(){
           <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:13px;color:var(--gold);margin-bottom:3px;">قيد الهاند الذكي</div>
           <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
           <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-          <span class="cr-version" style="font-size:10px;color:var(--red);">V5.3.2</span>
+          <span class="cr-version" style="font-size:10px;color:var(--red);">V5.3.3</span>
           <span style="font-size:10px;color:var(--red);"> · 2026</span>
         </div>
       </div>
@@ -7184,7 +7196,7 @@ function rtSubmit(){
     'الجوانب: ' + tagStr + '\n' +
     'التعليق: ' + (comment || 'لا يوجد') + '\n' +
     'التاريخ: ' + date + '\n\n' +
-    'Smart Hand Score V5.3.2'
+    'Smart Hand Score V5.3.3'
   );
   var subject = encodeURIComponent('تقييم — ' + stars + ' نجوم');
   var mailtoLink = 'mailto:sultan@handcards.app?subject=' + subject + '&body=' + mailBody;
@@ -7349,7 +7361,7 @@ document.getElementById('settings_panel').addEventListener('transitionend', _upd
 
 <script>
 /* ═══════════════════════════════════════════════
-   AUTH SYSTEM — HandCards V5.3.2
+   AUTH SYSTEM — HandCards V5.3.3
    البيانات تُحفظ في localStorage تحت مفتاح hc_auth
 ═══════════════════════════════════════════════ */
 
@@ -8152,8 +8164,8 @@ function updateGuestBars(isLoggedIn) {
   var sGuest = document.getElementById('sessions_guest_msg');
   if(rData)  rData.style.display  = isLoggedIn ? 'block' : 'none';
   if(rGuest) rGuest.style.display = isLoggedIn ? 'none'  : 'block';
-  if(sData)  sData.style.display  = isLoggedIn ? 'block' : 'none';
-  if(sGuest) sGuest.style.display = isLoggedIn ? 'none'  : 'block';
+  if(sData)  sData.style.display  = isLoggedIn ? 'flex' : 'none';
+  if(sGuest) sGuest.style.display = isLoggedIn ? 'none'  : 'flex';
 
   // زر الحفظ — يُعطّل للزائر
   var btnSave = document.getElementById('btn_save_session');
@@ -8457,12 +8469,13 @@ function supSubmit(){
 
   // إرسال عبر mailto كاحتياطي فعّال
   var typeLabel = {'technical':'دعم فني','suggestion':'مقترح','note':'ملاحظة','complaint':'شكوى'}[type] || 'عام';
-  var subject = encodeURIComponent('طلب دعم HandCards V5.3.2 — ' + typeLabel);
+  var subject = encodeURIComponent('طلب دعم — ' + typeLabel);
   var body = encodeURIComponent(
     'الاسم: ' + name + '\n' +
     'البريد: ' + email + '\n' +
     'نوع الطلب: ' + typeLabel + '\n\n' +
-    'الرسالة:\n' + msg
+    'الرسالة:\n' + msg + '\n\n' +
+    'Smart Hand Score V5.3.3'
   );
   window.location.href = 'mailto:support@handcards.app?subject=' + subject + '&body=' + body;
 
@@ -8477,7 +8490,7 @@ function supSubmit(){
     ['sup_name','sup_email','sup_msg'].forEach(function(id){
       var el = document.getElementById(id); if(el) el.value = '';
     });
-    var t = document.getElementById('sup_type'); if(t){ t.value=''; } var td=document.getElementById('sup_type_disp'); if(td) td.textContent='— اختر نوع الطلب';
+    var t = document.getElementById('sup_type'); if(t){ t.value=''; } var td=document.getElementById('sup_type_disp'); if(td){ td.textContent='— اختر نوع الطلب'; td.style.color='var(--muted)'; }
     var c = document.getElementById('sup_msg_count'); if(c) c.textContent = '٠ / ٣٠٠';
     if(btn)  btn.style.display  = '';
     if(done) done.style.display = 'none';
@@ -8521,7 +8534,7 @@ function shareReport(){
 
   lines.push('');
   lines.push('─────────────────────');
-  lines.push('HandCards V5.3.2 · قيد الهاند الذكي');
+  lines.push('HandCards V5.3.3 · قيد الهاند الذكي');
 
   var text = lines.join('\n');
 
@@ -8805,7 +8818,7 @@ function shareCertText(){
     intro + ' بأن اللاعب ' + fullName + '\n' +
     bodyText + '\n\n' +
     'قيد الهاند الذكي · جميع الحقوق محفوظة\n' +
-    'تصميم سلطان بن طوق المري · V5.3.2 · 2026';
+    'تصميم سلطان بن طوق المري · V5.3.3 · 2026';
 
   if(navigator.share){
     navigator.share({ title: 'شهادة محترف — ' + fullName, text: text })
