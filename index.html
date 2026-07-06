@@ -17,7 +17,7 @@
 :root{--bg-img: none;
   --red:#9B1C1C;--red2:#7f1d1d;--gold:#D4A843;
   --dark:#0F0F0F;--card:#1A1A1A;--card2:#222222;
-  --border:#2E2E2E;--inp:#2A2A2A;--text:#F5F5F5;--muted:#666;
+  --border:#2E2E2E;--inp:#2A2A2A;--inp-border:#3a3a3a;--text:#F5F5F5;--muted:#666;
 }
 html,body{
   background:#0F0F0F !important;
@@ -485,7 +485,7 @@ button.btn-app-gold:disabled{
 .sm-form{padding:14px;display:flex;flex-direction:column;gap:12px;border-bottom:1px solid var(--border);}
 .sm-form-row{display:flex;flex-direction:column;gap:6px;}
 .sm-players-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-.sm-input{background:var(--inp);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:600;outline:none;width:100%;color-scheme:dark;}
+.sm-input{background:var(--inp);color:var(--text);border:1.5px solid var(--inp-border);border-radius:10px;padding:10px 12px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:600;outline:none;width:100%;color-scheme:dark;}
 .sm-input:focus{border-color:var(--gold);}
 .sm-input::placeholder{color:#444;}
 .sm-player-inp{font-size:16px;padding:8px 10px;-webkit-text-size-adjust:100%;}
@@ -526,7 +526,7 @@ button.btn-app-gold:disabled{
 .pwd-overlay.show{display:flex;}
 .pwd-box{background:#1A1A1A;border:1px solid var(--gold);border-radius:18px;padding:24px 20px;width:85%;max-width:320px;text-align:center;}
 .pwd-title{font-size:16px;font-weight:700;color:var(--gold);margin-bottom:16px;font-family:'Tajawal',sans-serif;}
-.pwd-inp{width:100%;background:#2A2A2A;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:12px;font-size:16px;text-align:center;letter-spacing:0;outline:none;font-family:'Tajawal',sans-serif;margin-bottom:14px;}
+.pwd-inp{width:100%;background:var(--inp);color:var(--text);border:1.5px solid var(--inp-border);border-radius:10px;padding:12px;font-size:16px;text-align:center;letter-spacing:0;outline:none;font-family:'Tajawal',sans-serif;margin-bottom:14px;}
 .pwd-inp:focus{border-color:var(--gold);}
 /* حقل كلمة المرور المقنّع — يمنع autofill في Safari */
 .fake-pwd{-webkit-text-security:disc;text-security:disc;}
@@ -847,7 +847,7 @@ button.btn-app-gold:disabled{
 .setting-input {
   background: var(--inp);
   color: var(--text);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--inp-border);
   border-radius: 8px;
   padding: 7px 10px;
   font-family: 'Tajawal', sans-serif;
@@ -1040,7 +1040,7 @@ button.btn-app-gold:disabled{
 .hind-edit-name {
   background: var(--inp);
   color: var(--text);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--inp-border);
   border-radius: 8px;
   padding: 7px 10px;
   font-family: 'Tajawal', sans-serif;
@@ -1061,7 +1061,7 @@ button.btn-app-gold:disabled{
 .hind-edit-inp {
   background: var(--inp);
   color: var(--text);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--inp-border);
   border-radius: 8px;
   padding: 6px 4px;
   font-family: 'Tajawal', sans-serif;
@@ -1411,8 +1411,8 @@ nav {
 }
 .auth-input {
   width: 100%;
-  background: #2A2A2A;
-  border: 1px solid #3a3a3a;
+  background: var(--inp);
+  border: 1.5px solid var(--inp-border);
   border-radius: 10px;
   padding: 11px 14px;
   font-family: 'Tajawal', sans-serif;
@@ -1769,7 +1769,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.3.1</span>
+        <span style="font-size:10px;color:var(--red);">V5.3.2</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1794,7 +1794,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.3.1</span>
+        <span style="font-size:10px;color:var(--red);">V5.3.2</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1815,7 +1815,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.3.1</span>
+        <span style="font-size:10px;color:var(--red);">V5.3.2</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1850,7 +1850,7 @@ window.addEventListener('load', function(){
   <div style="text-align:center;">
     <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
     <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-    <span style="font-size:10px;color:var(--red);">V5.3.1</span>
+    <span style="font-size:10px;color:var(--red);">V5.3.2</span>
     <span style="font-size:10px;color:var(--red);"> · 2026</span>
   </div>
 </div>
@@ -2435,7 +2435,7 @@ function toggleInfoBox(){
             <div style="font-family:'Tajawal',sans-serif;font-size:7px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
             <div style="font-family:'Tajawal',sans-serif;font-size:7px;color:rgba(255,255,255,0.5);margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
             <div style="height:1px;background:rgba(200,168,75,0.5);margin-bottom:3px;"></div>
-            <div style="font-size:7px;color:var(--red);">V5.3.1 · 2026</div>
+            <div style="font-size:7px;color:var(--red);">V5.3.2 · 2026</div>
           </div>
 
           <!-- وسط: شعار فقط -->
@@ -2485,7 +2485,7 @@ function toggleInfoBox(){
       <div style="text-align:center;">
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.3.1</span>
+        <span style="font-size:10px;color:var(--red);">V5.3.2</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -2505,22 +2505,22 @@ function toggleInfoBox(){
         <div id="auth_register_body" class="auth-accordion-body auth-accordion-closed" style="background:#1A1A1A;border:1px solid #2a2a2a;border-top:none;border-radius:0 0 14px 14px;padding:0 18px;box-sizing:border-box;">
           <div style="height:16px;"></div>
           <div style="font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;color:var(--gold);margin-bottom:6px;text-align:right;">الاسم الكامل <span style="color:#ef4444;font-size:14px;line-height:1;">★</span></div>
-          <input class="auth-input rtl-input" type="text" id="reg_name" placeholder="أدخل اسمك الكامل" maxlength="30" style="width:100%;background:#252525;border:1px solid #3a3a3a;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:rtl;margin-bottom:14px;min-height:46px;">
+          <input class="auth-input rtl-input" type="text" id="reg_name" placeholder="أدخل اسمك الكامل" maxlength="30" style="width:100%;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:rtl;margin-bottom:14px;min-height:46px;">
           <div style="font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;color:var(--gold);margin-bottom:6px;text-align:right;">اسم المجلس أو الديوانية</div>
-          <input class="auth-input rtl-input" type="text" id="reg_council" placeholder="مثال: مجلس المري أو ديوانية المري..." maxlength="40" style="width:100%;background:#252525;border:1px solid #3a3a3a;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:rtl;margin-bottom:14px;min-height:46px;">
+          <input class="auth-input rtl-input" type="text" id="reg_council" placeholder="مثال: مجلس المري أو ديوانية المري..." maxlength="40" style="width:100%;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:rtl;margin-bottom:14px;min-height:46px;">
           <div style="font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;color:var(--gold);margin-bottom:6px;text-align:right;">البريد الإلكتروني <span style="color:#ef4444;font-size:14px;line-height:1;">★</span></div>
-          <input class="auth-input" type="email" id="reg_email" placeholder="example@email.com" style="width:100%;background:#252525;border:1px solid #3a3a3a;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:ltr;margin-bottom:14px;min-height:46px;">
+          <input class="auth-input" type="email" id="reg_email" placeholder="example@email.com" style="width:100%;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:ltr;margin-bottom:14px;min-height:46px;">
           <div style="font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;color:var(--gold);margin-bottom:6px;text-align:right;">كلمة المرور <span style="color:#ef4444;font-size:14px;line-height:1;">★</span></div>
           <div style="display:flex;flex-direction:row-reverse;align-items:center;gap:8px;margin-bottom:4px;">
-            <input class="auth-input" type="password" id="reg_pwd" placeholder="٨ أحرف على الأقل" maxlength="30" oninput="authCheckStrength()" style="flex:1;background:#252525;border:1px solid #3a3a3a;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:rtl;text-align:right;min-height:46px;">
-            <button type="button" onclick="var i=document.getElementById('reg_pwd');i.type=i.type==='password'?'text':'password';" style="background:#333;border:1px solid #444;border-radius:8px;padding:10px 12px;cursor:pointer;color:#aaa;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            <input class="auth-input" type="password" id="reg_pwd" placeholder="٨ أحرف على الأقل" maxlength="30" oninput="authCheckStrength()" style="flex:1;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:rtl;text-align:right;min-height:46px;">
+            <button type="button" onclick="var i=document.getElementById('reg_pwd');i.type=i.type==='password'?'text':'password';" style="background:var(--inp);border:1.5px solid var(--inp-border);border-radius:8px;padding:10px 12px;cursor:pointer;color:#aaa;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
           </div>
           <div style="height:5px;border-radius:3px;margin-bottom:8px;background:#333;overflow:hidden;"><div id="auth_str_bar" style="height:100%;width:0%;border-radius:3px;transition:width 0.3s,background 0.3s;"></div></div>
           <div id="auth_str_label" style="font-family:'Tajawal',sans-serif;font-size:11px;margin-bottom:12px;color:#888;text-align:right;"></div>
           <div style="font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;color:var(--gold);margin-bottom:6px;text-align:right;">تأكيد كلمة المرور <span style="color:#ef4444;font-size:14px;line-height:1;">★</span></div>
           <div style="display:flex;flex-direction:row-reverse;align-items:center;gap:8px;margin-bottom:16px;">
-            <input class="auth-input" type="password" id="reg_pwd2" placeholder="أعد إدخال كلمة المرور" maxlength="30" style="flex:1;background:#252525;border:1px solid #3a3a3a;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:rtl;text-align:right;min-height:46px;">
-            <button type="button" onclick="var i=document.getElementById('reg_pwd2');i.type=i.type==='password'?'text':'password';" style="background:#333;border:1px solid #444;border-radius:8px;padding:10px 12px;cursor:pointer;color:#aaa;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            <input class="auth-input" type="password" id="reg_pwd2" placeholder="أعد إدخال كلمة المرور" maxlength="30" style="flex:1;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:rtl;text-align:right;min-height:46px;">
+            <button type="button" onclick="var i=document.getElementById('reg_pwd2');i.type=i.type==='password'?'text':'password';" style="background:var(--inp);border:1.5px solid var(--inp-border);border-radius:8px;padding:10px 12px;cursor:pointer;color:#aaa;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
           </div>
           <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px;direction:rtl;">
             <input type="checkbox" id="reg_privacy" onchange="authPrivacyToggle()" style="width:18px;height:18px;accent-color:var(--gold);cursor:pointer;flex-shrink:0;margin-top:2px;">
@@ -2546,11 +2546,11 @@ function toggleInfoBox(){
         <div id="auth_login_body" class="auth-accordion-body auth-accordion-closed" style="background:#1A1A1A;border:1px solid #2a2a2a;border-top:none;border-radius:0 0 14px 14px;padding:0 18px;box-sizing:border-box;">
           <div style="height:16px;"></div>
           <div style="font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;color:var(--gold);margin-bottom:6px;text-align:right;">البريد الإلكتروني <span style="color:#ef4444;font-size:14px;line-height:1;">★</span></div>
-          <input class="auth-input" type="email" id="login_email" placeholder="example@email.com" style="width:100%;background:#252525;border:1px solid #3a3a3a;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:ltr;margin-bottom:14px;min-height:46px;">
+          <input class="auth-input" type="email" id="login_email" placeholder="example@email.com" style="width:100%;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:ltr;margin-bottom:14px;min-height:46px;">
           <div style="font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;color:var(--gold);margin-bottom:6px;text-align:right;">كلمة المرور <span style="color:#ef4444;font-size:14px;line-height:1;">★</span></div>
           <div style="display:flex;flex-direction:row-reverse;align-items:center;gap:8px;margin-bottom:6px;">
-            <input class="auth-input" type="password" id="login_pwd" placeholder="أدخل كلمة المرور" maxlength="30" style="flex:1;background:#252525;border:1px solid #3a3a3a;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:rtl;text-align:right;min-height:46px;">
-            <button type="button" onclick="var i=document.getElementById('login_pwd');i.type=i.type==='password'?'text':'password';" style="background:#333;border:1px solid #444;border-radius:8px;padding:10px 12px;cursor:pointer;color:#aaa;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            <input class="auth-input" type="password" id="login_pwd" placeholder="أدخل كلمة المرور" maxlength="30" style="flex:1;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:rtl;text-align:right;min-height:46px;">
+            <button type="button" onclick="var i=document.getElementById('login_pwd');i.type=i.type==='password'?'text':'password';" style="background:var(--inp);border:1.5px solid var(--inp-border);border-radius:8px;padding:10px 12px;cursor:pointer;color:#aaa;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
           </div>
           <button onclick="authDoLogin()" style="width:100%;padding:14px;border:none;border-radius:12px;font-family:'Cairo',sans-serif;font-weight:900;font-size:15px;cursor:pointer;background:linear-gradient(135deg,var(--gold),#b8892e);color:#0F0F0F;margin-top:8px;margin-bottom:10px;">الدخول</button>
           <div style="text-align:center;margin-bottom:16px;">
@@ -2776,7 +2776,7 @@ function toggleInfoBox(){
     <!-- ① إدارة بيانات الملف الشخصي -->
     <!-- ══════════════════════════════════════════ -->
     <div id="profile_section" style="display:none;">
-    <div class="gold-frame" style="border-radius:16px;overflow:hidden;margin-bottom:12px;background:var(--card2);">
+    <div class="gold-frame" style="border-radius:18px;overflow:hidden;margin-bottom:12px;background:var(--card);">
       <div class="gf-corner gf-tr"></div><div class="gf-corner gf-tl"></div>
       <div class="gf-corner gf-br"></div><div class="gf-corner gf-bl"></div>
       <div onclick="toggleAccordion('acc_profile')" style="display:flex;align-items:center;gap:8px;padding:10px 16px;background:rgba(212,168,67,0.03);cursor:pointer;user-select:none;">
@@ -2859,7 +2859,7 @@ function toggleInfoBox(){
     <!-- ══════════════════════════════════════════ -->
     <!-- ② إدارة بيانات الجولات -->
     <!-- ══════════════════════════════════════════ -->
-    <div class="gold-frame" style="border-radius:16px;overflow:hidden;margin-bottom:12px;background:var(--card2);">
+    <div class="gold-frame" style="border-radius:18px;overflow:hidden;margin-bottom:12px;background:var(--card);">
       <div class="gf-corner gf-tr"></div><div class="gf-corner gf-tl"></div>
       <div class="gf-corner gf-br"></div><div class="gf-corner gf-bl"></div>
       <div onclick="toggleAccordion('acc_rounds')" style="display:flex;align-items:center;gap:8px;padding:10px 16px;background:rgba(212,168,67,0.03);cursor:pointer;user-select:none;">
@@ -2930,7 +2930,7 @@ function toggleInfoBox(){
     <!-- ══════════════════════════════════════════ -->
     <!-- ③ إدارة وتخصيص جدول الهاند -->
     <!-- ══════════════════════════════════════════ -->
-    <div class="gold-frame" style="border-radius:16px;overflow:hidden;margin-bottom:12px;background:var(--card2);">
+    <div class="gold-frame" style="border-radius:18px;overflow:hidden;margin-bottom:12px;background:var(--card);">
       <div class="gf-corner gf-tr"></div><div class="gf-corner gf-tl"></div>
       <div class="gf-corner gf-br"></div><div class="gf-corner gf-bl"></div>
       <div onclick="toggleAccordion('acc_hind')" style="display:flex;align-items:center;gap:8px;padding:10px 16px;background:rgba(212,168,67,0.03);cursor:pointer;user-select:none;">
@@ -2991,7 +2991,7 @@ function toggleInfoBox(){
     <!-- ══════════════════════════════════════════ -->
     <!-- ③ إدارة بيانات التطبيق -->
     <!-- ══════════════════════════════════════════ -->
-    <div class="gold-frame" style="border-radius:16px;overflow:hidden;margin-bottom:12px;background:var(--card2);">
+    <div class="gold-frame" style="border-radius:18px;overflow:hidden;margin-bottom:12px;background:var(--card);">
       <div class="gf-corner gf-tr"></div><div class="gf-corner gf-tl"></div>
       <div class="gf-corner gf-br"></div><div class="gf-corner gf-bl"></div>
       <div onclick="toggleAccordion('acc_app')" style="display:flex;align-items:center;gap:8px;padding:10px 16px;background:rgba(212,168,67,0.03);cursor:pointer;user-select:none;">
@@ -3398,20 +3398,20 @@ function toggleInfoBox(){
   <div class="panel-body">
     <div style="height:8px;"></div>
     <div style="font-family:'Tajawal',sans-serif;font-size:13px;color:#ccc;margin-bottom:6px;text-align:right;">الاسم الكامل</div>
-    <input class="auth-input rtl-input" type="text" id="rp_name" placeholder="أدخل اسمك الكامل" maxlength="30" oninput="rpCheckReady()" style="width:100%;background:#252525;border:1px solid #3a3a3a;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:rtl;margin-bottom:14px;min-height:46px;">
+    <input class="auth-input rtl-input" type="text" id="rp_name" placeholder="أدخل اسمك الكامل" maxlength="30" oninput="rpCheckReady()" style="width:100%;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:rtl;margin-bottom:14px;min-height:46px;">
     <div style="font-family:'Tajawal',sans-serif;font-size:13px;color:#ccc;margin-bottom:6px;text-align:right;">البريد الإلكتروني</div>
-    <input class="auth-input" type="email" id="rp_email" placeholder="example@email.com" oninput="rpCheckReady()" style="width:100%;background:#252525;border:1px solid #3a3a3a;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:ltr;margin-bottom:14px;min-height:46px;">
+    <input class="auth-input" type="email" id="rp_email" placeholder="example@email.com" oninput="rpCheckReady()" style="width:100%;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:ltr;margin-bottom:14px;min-height:46px;">
     <div style="font-family:'Tajawal',sans-serif;font-size:13px;color:#ccc;margin-bottom:6px;text-align:right;">كلمة المرور</div>
     <div style="display:flex;flex-direction:row-reverse;align-items:center;gap:8px;margin-bottom:4px;">
-      <input class="auth-input" type="password" id="rp_pwd" placeholder="٨ أحرف على الأقل" maxlength="30" oninput="rpCheckStrength()" style="flex:1;background:#252525;border:1px solid #3a3a3a;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:rtl;text-align:right;min-height:46px;">
-      <button type="button" onclick="var i=document.getElementById('rp_pwd');i.type=i.type==='password'?'text':'password';" style="background:#333;border:1px solid #444;border-radius:8px;padding:10px 12px;cursor:pointer;color:#aaa;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+      <input class="auth-input" type="password" id="rp_pwd" placeholder="٨ أحرف على الأقل" maxlength="30" oninput="rpCheckStrength()" style="flex:1;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:rtl;text-align:right;min-height:46px;">
+      <button type="button" onclick="var i=document.getElementById('rp_pwd');i.type=i.type==='password'?'text':'password';" style="background:var(--inp);border:1.5px solid var(--inp-border);border-radius:8px;padding:10px 12px;cursor:pointer;color:#aaa;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
     </div>
     <div style="height:5px;border-radius:3px;margin-bottom:8px;background:#333;overflow:hidden;"><div id="rp_str_bar" style="height:100%;width:0%;border-radius:3px;transition:width 0.3s,background 0.3s;"></div></div>
     <div id="rp_str_label" style="font-family:'Tajawal',sans-serif;font-size:11px;margin-bottom:12px;color:#888;text-align:right;"></div>
     <div style="font-family:'Tajawal',sans-serif;font-size:13px;color:#ccc;margin-bottom:6px;text-align:right;">تأكيد كلمة المرور</div>
     <div style="display:flex;flex-direction:row-reverse;align-items:center;gap:8px;margin-bottom:16px;">
-      <input class="auth-input" type="password" id="rp_pwd2" placeholder="أعد إدخال كلمة المرور" maxlength="30" style="flex:1;background:#252525;border:1px solid #3a3a3a;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:rtl;text-align:right;min-height:46px;">
-      <button type="button" onclick="var i=document.getElementById('rp_pwd2');i.type=i.type==='password'?'text':'password';" style="background:#333;border:1px solid #444;border-radius:8px;padding:10px 12px;cursor:pointer;color:#aaa;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+      <input class="auth-input" type="password" id="rp_pwd2" placeholder="أعد إدخال كلمة المرور" maxlength="30" style="flex:1;border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;box-sizing:border-box;direction:rtl;text-align:right;min-height:46px;">
+      <button type="button" onclick="var i=document.getElementById('rp_pwd2');i.type=i.type==='password'?'text':'password';" style="background:var(--inp);border:1.5px solid var(--inp-border);border-radius:8px;padding:10px 12px;cursor:pointer;color:#aaa;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
     </div>
     <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px;direction:rtl;">
       <input type="checkbox" id="rp_privacy" onchange="rpPrivacyToggle()" style="width:18px;height:18px;accent-color:var(--gold);cursor:pointer;flex-shrink:0;margin-top:2px;">
@@ -3438,13 +3438,17 @@ function toggleInfoBox(){
   <div class="panel-body" style="padding-bottom:calc(68px + env(safe-area-inset-bottom,0px) + 16px);overflow-y:auto;">
 
     <!-- العنوان -->
-    <div style="background:linear-gradient(135deg,rgba(212,168,67,0.13),rgba(212,168,67,0.04));border:2px solid rgba(212,168,67,0.65);border-radius:18px;padding:16px 18px;text-align:center;margin-bottom:14px;box-shadow:0 2px 12px rgba(212,168,67,0.18);">
+    <div class="gold-frame" style="position:relative;background:linear-gradient(135deg,rgba(212,168,67,0.13),rgba(212,168,67,0.04));border-radius:18px;padding:16px 18px;text-align:center;margin-bottom:14px;">
+      <div class="gf-corner gf-tr"></div><div class="gf-corner gf-tl"></div>
+      <div class="gf-corner gf-br"></div><div class="gf-corner gf-bl"></div>
       <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:17px;color:var(--gold);margin-bottom:4px;">قيد الهاند الذكي</div>
       <div style="font-family:'Tajawal',sans-serif;font-weight:700;font-size:13px;color:#aaa;">رأيك يهمنا — ساعدنا في التحسين</div>
     </div>
 
     <!-- النجوم -->
-    <div style="background:var(--card);border:2px solid rgba(212,168,67,0.65);border-radius:18px;padding:18px 14px 14px;text-align:center;margin-bottom:14px;box-shadow:0 2px 12px rgba(212,168,67,0.18);">
+    <div class="gold-frame" style="position:relative;background:var(--card);border-radius:18px;padding:18px 14px 14px;text-align:center;margin-bottom:14px;">
+      <div class="gf-corner gf-tr"></div><div class="gf-corner gf-tl"></div>
+      <div class="gf-corner gf-br"></div><div class="gf-corner gf-bl"></div>
       <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:13px;color:var(--gold);margin-bottom:14px;">كيف تقيّم تجربتك؟</div>
       <div id="rt_stars" style="display:flex;justify-content:center;gap:10px;margin-bottom:8px;overflow:visible;padding:6px 0 2px;">
         <span class="rt-star" data-v="1" onclick="rtSetStar(1)">★</span>
@@ -3457,7 +3461,9 @@ function toggleInfoBox(){
     </div>
 
     <!-- وصف سريع -->
-    <div style="background:var(--card);border:2px solid rgba(212,168,67,0.65);border-radius:18px;padding:16px 14px;margin-bottom:14px;box-shadow:0 2px 12px rgba(212,168,67,0.18);">
+    <div class="gold-frame" style="position:relative;background:var(--card);border-radius:18px;padding:16px 14px;margin-bottom:14px;">
+      <div class="gf-corner gf-tr"></div><div class="gf-corner gf-tl"></div>
+      <div class="gf-corner gf-br"></div><div class="gf-corner gf-bl"></div>
       <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:13px;color:var(--gold);margin-bottom:12px;text-align:right;">ما الذي أعجبك أكثر؟</div>
       <div id="rt_tags" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
         <button class="rt-tag" onclick="rtToggleTag(this)">سهل الاستخدام</button>
@@ -3470,11 +3476,13 @@ function toggleInfoBox(){
     </div>
 
     <!-- تعليق نصي -->
-    <div style="background:var(--card);border:2px solid rgba(212,168,67,0.65);border-radius:18px;padding:16px 14px;margin-bottom:14px;box-shadow:0 2px 12px rgba(212,168,67,0.18);">
+    <div class="gold-frame" style="position:relative;background:var(--card);border-radius:18px;padding:16px 14px;margin-bottom:14px;">
+      <div class="gf-corner gf-tr"></div><div class="gf-corner gf-tl"></div>
+      <div class="gf-corner gf-br"></div><div class="gf-corner gf-bl"></div>
       <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:13px;color:var(--gold);margin-bottom:8px;text-align:right;">تعليق إضافي (اختياري)</div>
       <textarea id="rt_comment" placeholder="اكتب رأيك هنا..." maxlength="300"
-        style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(212,168,67,0.25);border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;color:#ffffff;outline:none;resize:none;height:90px;box-sizing:border-box;direction:rtl;line-height:1.6;"
-        oninput="this.style.borderColor=this.value?'rgba(212,168,67,0.6)':'rgba(212,168,67,0.25)';(function(el,v){el.textContent=('٠١٢٣٤٥٦٧٨٩'[v]||String(v).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]))})(document.getElementById('rt_char_count'),this.value.length);"></textarea>
+        style="width:100%;background:var(--inp);border:1.5px solid var(--inp-border);border-radius:10px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;color:var(--text);outline:none;resize:none;height:90px;box-sizing:border-box;direction:rtl;line-height:1.6;"
+        oninput="this.style.borderColor=this.value?'var(--gold)':'var(--inp-border)';(function(el,v){el.textContent=('٠١٢٣٤٥٦٧٨٩'[v]||String(v).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]))})(document.getElementById('rt_char_count'),this.value.length);"></textarea>
       <div style="text-align:left;font-family:'Tajawal',sans-serif;font-size:11px;color:#555;margin-top:3px;"><span id="rt_char_count">٠</span>/٣٠٠</div>
     </div>
 
@@ -3541,7 +3549,7 @@ function toggleInfoBox(){
     <div style="height:8px;"></div>
 
     <!-- مربع تواصل معنا - مقفل تلقائياً -->
-    <div class="gold-frame" style="border-radius:14px;overflow:hidden;margin-bottom:12px;background:var(--card2);">
+    <div class="gold-frame" style="border-radius:18px;overflow:hidden;margin-bottom:12px;background:var(--card);">
       <div class="gf-corner gf-tr"></div><div class="gf-corner gf-tl"></div>
       <div class="gf-corner gf-br"></div><div class="gf-corner gf-bl"></div>
       <button onclick="supToggleForm()" style="width:100%;background:rgba(212,168,67,0.03);border:none;padding:10px 16px;display:flex;align-items:center;gap:8px;cursor:pointer;direction:rtl;">
@@ -3554,12 +3562,12 @@ function toggleInfoBox(){
         <!-- الاسم -->
         <div class="setting-row-label" style="color:var(--gold);margin-bottom:6px;text-align:right;">الاسم</div>
         <input id="sup_name" type="text" placeholder="اسمك" maxlength="40"
-          style="width:100%;background:#1A1A1A;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:11px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;text-align:right;direction:rtl;margin-bottom:12px;min-height:44px;box-sizing:border-box;color-scheme:dark;">
+          style="width:100%;background:var(--inp);color:var(--text);border:1.5px solid var(--inp-border);border-radius:10px;padding:11px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;text-align:right;direction:rtl;margin-bottom:12px;min-height:44px;box-sizing:border-box;color-scheme:dark;">
 
         <!-- البريد الإلكتروني -->
         <div class="setting-row-label" style="color:var(--gold);margin-bottom:6px;text-align:right;">البريد الإلكتروني</div>
         <input id="sup_email" type="email" placeholder="example@email.com"
-          style="width:100%;background:#1A1A1A;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:11px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;direction:ltr;text-align:left;margin-bottom:12px;min-height:44px;box-sizing:border-box;color-scheme:dark;">
+          style="width:100%;background:var(--inp);color:var(--text);border:1.5px solid var(--inp-border);border-radius:10px;padding:11px 14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;outline:none;direction:ltr;text-align:left;margin-bottom:12px;min-height:44px;box-sizing:border-box;color-scheme:dark;">
 
         <!-- نوع الدعم - dropdown -->
         <div class="setting-row-label" style="color:var(--gold);margin-bottom:8px;text-align:right;">نوع الطلب <span style="color:var(--muted);font-size:11px;">(اختياري)</span></div>
@@ -3573,7 +3581,7 @@ function toggleInfoBox(){
             <option value="complaint">⚠️ شكوى</option>
           </select>
           <div id="sup_type_disp" onclick="gselOpen(this,document.getElementById('sup_type'))"
-            style="background:#1A1A1A;color:var(--muted);border:1px solid var(--border);border-radius:10px;padding:11px 14px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;text-align:right;direction:rtl;cursor:pointer;user-select:none;">— اختر نوع الطلب</div>
+            style="background:var(--inp);color:var(--muted);border:1.5px solid var(--inp-border);border-radius:10px;padding:11px 14px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;text-align:right;direction:rtl;cursor:pointer;user-select:none;">— اختر نوع الطلب</div>
         </div>
 
         <!-- رسالة الدعم -->
@@ -3582,7 +3590,7 @@ function toggleInfoBox(){
           <span id="sup_msg_count" style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);">0 / 300</span>
         </div>
         <textarea id="sup_msg" maxlength="300" placeholder="اكتب رسالتك هنا..." oninput="supCountChars()"
-          style="width:100%;background:#1A1A1A;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:11px 14px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;outline:none;min-height:110px;resize:none;line-height:1.6;box-sizing:border-box;text-align:right;direction:rtl;color-scheme:dark;margin-bottom:4px;"></textarea>
+          style="width:100%;background:var(--inp);color:var(--text);border:1.5px solid var(--inp-border);border-radius:10px;padding:11px 14px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;outline:none;min-height:110px;resize:none;line-height:1.6;box-sizing:border-box;text-align:right;direction:rtl;color-scheme:dark;margin-bottom:4px;"></textarea>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);text-align:right;margin-bottom:14px;">اختصر موضوعك بوضوح في ٣٠٠ حرف أو أقل</div>
 
         <!-- زر الإرسال -->
@@ -3596,7 +3604,7 @@ function toggleInfoBox(){
     </div>
 
     <!-- مربع اتصل بنا - مغلق accordion -->
-    <div class="gold-frame" style="border-radius:14px;overflow:hidden;background:var(--card2);">
+    <div class="gold-frame" style="border-radius:18px;overflow:hidden;background:var(--card);">
       <div class="gf-corner gf-tr"></div><div class="gf-corner gf-tl"></div>
       <div class="gf-corner gf-br"></div><div class="gf-corner gf-bl"></div>
       <button onclick="supToggleContact()" style="width:100%;background:rgba(212,168,67,0.03);border:none;padding:10px 16px;display:flex;align-items:center;gap:8px;cursor:pointer;direction:rtl;">
@@ -3615,7 +3623,7 @@ function toggleInfoBox(){
           <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:13px;color:var(--gold);margin-bottom:3px;">قيد الهاند الذكي</div>
           <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
           <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-          <span class="cr-version" style="font-size:10px;color:var(--red);">V5.3.1</span>
+          <span class="cr-version" style="font-size:10px;color:var(--red);">V5.3.2</span>
           <span style="font-size:10px;color:var(--red);"> · 2026</span>
         </div>
       </div>
@@ -3687,11 +3695,11 @@ function toggleInfoBox(){
   <div class="pwd-box" style="width:88%;max-width:340px;">
     <div class="pwd-title">🔑 تغيير كلمة المرور</div>
     <div style="font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;color:#ffffff;margin-bottom:6px;text-align:right;">كلمة المرور الحالية</div>
-    <div style="display:flex;gap:6px;margin-bottom:10px;"><button type="button" onclick="var i=document.getElementById('set_pwd_old');i.type=i.type==='password'?'text':'password';" style="background:#333;border:1px solid #444;border-radius:8px;padding:8px 10px;cursor:pointer;color:#aaa;flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><input class="pwd-inp" type="password" id="set_pwd_old" placeholder="كلمة المرور الحالية" maxlength="20" style="font-size:16px;flex:1;margin-bottom:0;background:#2A2A2A;border:1px solid var(--border);"></div>
+    <div style="display:flex;gap:6px;margin-bottom:10px;"><button type="button" onclick="var i=document.getElementById('set_pwd_old');i.type=i.type==='password'?'text':'password';" style="background:var(--inp);border:1.5px solid var(--inp-border);border-radius:8px;padding:8px 10px;cursor:pointer;color:#aaa;flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><input class="pwd-inp" type="password" id="set_pwd_old" placeholder="كلمة المرور الحالية" maxlength="20" style="font-size:16px;flex:1;margin-bottom:0;background:#2A2A2A;border:1px solid var(--border);"></div>
     <div style="font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;color:#ffffff;margin-bottom:6px;text-align:right;">كلمة المرور الجديدة</div>
-    <div style="display:flex;gap:6px;margin-bottom:10px;"><button type="button" onclick="var i=document.getElementById('set_pwd_new');i.type=i.type==='password'?'text':'password';" style="background:#333;border:1px solid #444;border-radius:8px;padding:8px 10px;cursor:pointer;color:#aaa;flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><input class="pwd-inp" type="password" id="set_pwd_new" placeholder="كلمة المرور الجديدة" maxlength="20" style="font-size:16px;flex:1;margin-bottom:0;"></div>
+    <div style="display:flex;gap:6px;margin-bottom:10px;"><button type="button" onclick="var i=document.getElementById('set_pwd_new');i.type=i.type==='password'?'text':'password';" style="background:var(--inp);border:1.5px solid var(--inp-border);border-radius:8px;padding:8px 10px;cursor:pointer;color:#aaa;flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><input class="pwd-inp" type="password" id="set_pwd_new" placeholder="كلمة المرور الجديدة" maxlength="20" style="font-size:16px;flex:1;margin-bottom:0;"></div>
     <div style="font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;color:#ffffff;margin-bottom:6px;text-align:right;">تأكيد كلمة المرور الجديدة</div>
-    <div style="display:flex;gap:6px;margin-bottom:6px;"><button type="button" onclick="var i=document.getElementById('set_pwd_new2');i.type=i.type==='password'?'text':'password';" style="background:#333;border:1px solid #444;border-radius:8px;padding:8px 10px;cursor:pointer;color:#aaa;flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><input class="pwd-inp" type="password" id="set_pwd_new2" placeholder="أعد إدخال كلمة المرور" maxlength="20" style="font-size:16px;flex:1;margin-bottom:0;"></div>
+    <div style="display:flex;gap:6px;margin-bottom:6px;"><button type="button" onclick="var i=document.getElementById('set_pwd_new2');i.type=i.type==='password'?'text':'password';" style="background:var(--inp);border:1.5px solid var(--inp-border);border-radius:8px;padding:8px 10px;cursor:pointer;color:#aaa;flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><input class="pwd-inp" type="password" id="set_pwd_new2" placeholder="أعد إدخال كلمة المرور" maxlength="20" style="font-size:16px;flex:1;margin-bottom:0;"></div>
     <div id="chgpwd_err" style="color:#f87171;font-size:11px;font-family:'Tajawal',sans-serif;text-align:center;min-height:16px;margin-bottom:8px;"></div>
     <div class="pwd-btns">
       <button class="pwd-confirm" onclick="saveChangePwd()">حفظ</button>
@@ -7176,7 +7184,7 @@ function rtSubmit(){
     'الجوانب: ' + tagStr + '\n' +
     'التعليق: ' + (comment || 'لا يوجد') + '\n' +
     'التاريخ: ' + date + '\n\n' +
-    'Smart Hand Score V5.3.1'
+    'Smart Hand Score V5.3.2'
   );
   var subject = encodeURIComponent('تقييم — ' + stars + ' نجوم');
   var mailtoLink = 'mailto:sultan@handcards.app?subject=' + subject + '&body=' + mailBody;
@@ -7341,7 +7349,7 @@ document.getElementById('settings_panel').addEventListener('transitionend', _upd
 
 <script>
 /* ═══════════════════════════════════════════════
-   AUTH SYSTEM — HandCards V5.3.1
+   AUTH SYSTEM — HandCards V5.3.2
    البيانات تُحفظ في localStorage تحت مفتاح hc_auth
 ═══════════════════════════════════════════════ */
 
@@ -8449,7 +8457,7 @@ function supSubmit(){
 
   // إرسال عبر mailto كاحتياطي فعّال
   var typeLabel = {'technical':'دعم فني','suggestion':'مقترح','note':'ملاحظة','complaint':'شكوى'}[type] || 'عام';
-  var subject = encodeURIComponent('طلب دعم HandCards V5.3.1 — ' + typeLabel);
+  var subject = encodeURIComponent('طلب دعم HandCards V5.3.2 — ' + typeLabel);
   var body = encodeURIComponent(
     'الاسم: ' + name + '\n' +
     'البريد: ' + email + '\n' +
@@ -8513,7 +8521,7 @@ function shareReport(){
 
   lines.push('');
   lines.push('─────────────────────');
-  lines.push('HandCards V5.3.1 · قيد الهاند الذكي');
+  lines.push('HandCards V5.3.2 · قيد الهاند الذكي');
 
   var text = lines.join('\n');
 
@@ -8797,7 +8805,7 @@ function shareCertText(){
     intro + ' بأن اللاعب ' + fullName + '\n' +
     bodyText + '\n\n' +
     'قيد الهاند الذكي · جميع الحقوق محفوظة\n' +
-    'تصميم سلطان بن طوق المري · V5.3.1 · 2026';
+    'تصميم سلطان بن طوق المري · V5.3.2 · 2026';
 
   if(navigator.share){
     navigator.share({ title: 'شهادة محترف — ' + fullName, text: text })
