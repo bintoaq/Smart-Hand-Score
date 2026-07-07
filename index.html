@@ -1704,6 +1704,7 @@ nav {
 <!-- ══ شاشة البداية (Splash) ══ -->
 <div id="app_splash" style="position:fixed;inset:0;z-index:999999;background:#0F0F0F;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .7s ease;overflow:hidden;">
   <img src="./math-logo.png" alt="Smart Hand Score" style="width:min(98vw,620px);height:auto;object-fit:contain;animation:splashPop .9s ease-out, splashGlowPulse 2.6s ease-in-out .9s infinite;filter:drop-shadow(0 0 34px rgba(212,168,67,0.55)) drop-shadow(0 0 70px rgba(212,168,67,0.28));">
+  <div style="margin-top:10px;font-family:'Cairo',sans-serif;font-weight:900;font-size:17px;color:var(--gold);text-shadow:0 0 18px rgba(212,168,67,0.35);animation:splashPop .9s ease-out;">سجلها بذكاء</div>
 </div>
 <!-- نغمة الترحيب: ضع ملف الصوت باسم welcome-sound.mp3 بجانب index.html -->
 <audio id="splash_sound" src="./welcome-sound.mp3" preload="auto"></audio>
@@ -1770,7 +1771,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.3.4</span>
+        <span style="font-size:10px;color:var(--red);">V5.4</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1795,7 +1796,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.3.4</span>
+        <span style="font-size:10px;color:var(--red);">V5.4</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1816,7 +1817,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.3.4</span>
+        <span style="font-size:10px;color:var(--red);">V5.4</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1851,7 +1852,7 @@ window.addEventListener('load', function(){
   <div style="text-align:center;">
     <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
     <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-    <span style="font-size:10px;color:var(--red);">V5.3.4</span>
+    <span style="font-size:10px;color:var(--red);">V5.4</span>
     <span style="font-size:10px;color:var(--red);"> · 2026</span>
   </div>
 </div>
@@ -2294,7 +2295,7 @@ function toggleInfoBox(){
 <!-- رسالة الزائر في النتائج -->
 <div id="results_guest_msg" style="display:none;text-align:center;padding:24px 0 40px;">
   <div style="width:100%;display:flex;justify-content:center;padding-bottom:10px;">
-    <img src="./math-logo.png" alt="" style="width:min(80vw,340px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 20px rgba(212,168,67,0.25));">
+    <img src="./math-logo.png" alt="" class="app-logo-glow" style="width:min(80vw,340px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 20px rgba(212,168,67,0.25));">
   </div>
   <div style="font-size:32px;margin-bottom:10px;">🔒</div>
   <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:16px;color:var(--gold);margin-bottom:8px;">سجّل دخولك لعرض النتائج</div>
@@ -2436,7 +2437,7 @@ function toggleInfoBox(){
             <div style="font-family:'Tajawal',sans-serif;font-size:7px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
             <div style="font-family:'Tajawal',sans-serif;font-size:7px;color:rgba(255,255,255,0.5);margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
             <div style="height:1px;background:rgba(200,168,75,0.5);margin-bottom:3px;"></div>
-            <div style="font-size:7px;color:var(--red);">V5.3.4 · 2026</div>
+            <div style="font-size:7px;color:var(--red);">V5.4 · 2026</div>
           </div>
 
           <!-- وسط: شعار فقط -->
@@ -2486,7 +2487,7 @@ function toggleInfoBox(){
       <div style="text-align:center;">
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.3.4</span>
+        <span style="font-size:10px;color:var(--red);">V5.4</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -2642,30 +2643,41 @@ function toggleInfoBox(){
 
 <!-- محتوى السجل للمسجّل -->
 <div id="sessions_data_section" style="display:flex;flex-direction:column;flex:1;">
-  <div style="width:100%;display:flex;justify-content:center;padding:0 0 10px;">
-    <img src="./character-book.png" alt="" style="width:min(50vw,200px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 20px rgba(212,168,67,0.25));">
+  <div style="width:100%;display:flex;justify-content:center;padding:6px 0 14px;">
+    <img src="./character-book.png" alt="" class="app-logo-glow" style="width:min(72vw,300px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 20px rgba(212,168,67,0.25));">
   </div>
-  <div style="background:var(--card);border-radius:18px;padding:14px 10px 8px;margin-bottom:10px;" class="gold-frame">
+  <div style="background:var(--card);border-radius:18px;overflow:hidden;margin-bottom:16px;" class="gold-frame">
     <div class="gf-corner gf-tr"></div><div class="gf-corner gf-tl"></div>
     <div class="gf-corner gf-br"></div><div class="gf-corner gf-bl"></div>
-    <!-- التنقل بين الأشهر -->
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;padding:0 4px;">
-      <button onclick="calPrevMonth()" style="background:none;border:none;color:var(--gold);font-size:22px;cursor:pointer;padding:0 6px;">‹</button>
-      <div id="cal_month_label" style="font-family:'Cairo',sans-serif;font-weight:900;font-size:16px;color:#fff;"></div>
-      <button onclick="calNextMonth()" style="background:none;border:none;color:var(--gold);font-size:22px;cursor:pointer;padding:0 6px;">›</button>
+    <!-- رأس التقويم قابل للضغط -->
+    <div class="pros-table-head" onclick="toggleProsBox(this)" style="padding:10px 16px;background:rgba(212,168,67,0.03);">
+      <div class="pros-table-arrow closed" style="flex-shrink:0;color:rgba(212,168,67,0.6);">▼</div>
+      <div class="pros-table-title" id="cal_month_label" style="text-align:center;color:var(--gold);"></div>
+      <div class="pros-table-icon" style="flex-shrink:0;">📅</div>
     </div>
-    <!-- أيام الأسبوع -->
-    <div style="display:grid;grid-template-columns:repeat(7,1fr);text-align:center;margin-bottom:4px;">
-      <div style="font-family:'Cairo',sans-serif;font-size:11px;color:var(--red);padding:2px 0;">أح</div>
-      <div style="font-family:'Cairo',sans-serif;font-size:11px;color:var(--muted);padding:2px 0;">إث</div>
-      <div style="font-family:'Cairo',sans-serif;font-size:11px;color:var(--muted);padding:2px 0;">ثل</div>
-      <div style="font-family:'Cairo',sans-serif;font-size:11px;color:var(--muted);padding:2px 0;">أر</div>
-      <div style="font-family:'Cairo',sans-serif;font-size:11px;color:var(--muted);padding:2px 0;">خم</div>
-      <div style="font-family:'Cairo',sans-serif;font-size:11px;color:var(--muted);padding:2px 0;">جم</div>
-      <div style="font-family:'Cairo',sans-serif;font-size:11px;color:var(--red);padding:2px 0;">سب</div>
+    <!-- محتوى التقويم - مغلق افتراضياً -->
+    <div class="pros-table-body closed">
+      <div style="padding:14px 10px 8px;">
+        <!-- التنقل بين الأشهر -->
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;padding:0 4px;">
+          <button onclick="calPrevMonth()" style="background:none;border:none;color:var(--gold);font-size:22px;cursor:pointer;padding:0 6px;">‹</button>
+          <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:13px;color:var(--muted);">التنقل بين الأشهر</div>
+          <button onclick="calNextMonth()" style="background:none;border:none;color:var(--gold);font-size:22px;cursor:pointer;padding:0 6px;">›</button>
+        </div>
+        <!-- أيام الأسبوع -->
+        <div style="display:grid;grid-template-columns:repeat(7,1fr);text-align:center;margin-bottom:4px;">
+          <div style="font-family:'Cairo',sans-serif;font-size:11px;color:var(--red);padding:2px 0;">أح</div>
+          <div style="font-family:'Cairo',sans-serif;font-size:11px;color:var(--muted);padding:2px 0;">إث</div>
+          <div style="font-family:'Cairo',sans-serif;font-size:11px;color:var(--muted);padding:2px 0;">ثل</div>
+          <div style="font-family:'Cairo',sans-serif;font-size:11px;color:var(--muted);padding:2px 0;">أر</div>
+          <div style="font-family:'Cairo',sans-serif;font-size:11px;color:var(--muted);padding:2px 0;">خم</div>
+          <div style="font-family:'Cairo',sans-serif;font-size:11px;color:var(--muted);padding:2px 0;">جم</div>
+          <div style="font-family:'Cairo',sans-serif;font-size:11px;color:var(--red);padding:2px 0;">سب</div>
+        </div>
+        <!-- خلايا التقويم -->
+        <div id="cal_grid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;"></div>
+      </div>
     </div>
-    <!-- خلايا التقويم -->
-    <div id="cal_grid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;"></div>
   </div>
 
   <!-- نتائج اليوم المحدد -->
@@ -2686,6 +2698,9 @@ function toggleInfoBox(){
     <span style="font-size:20px;">📊</span>
     <span style="font-family:'Cairo',sans-serif;font-weight:900;font-size:14px;color:var(--gold);">تقرير الإحصائيات</span>
   </button>
+
+  <!-- عنوان أرشيف الجلسات -->
+  <div class="divider"><div class="divider-line"></div><div class="divider-label">التاريخ يكتبه المنتصرون</div><div class="divider-line"></div></div>
 
   <!-- أرشيف الجلسات بإطار ذهبي -->
   <div style="background:var(--card);border-radius:18px;overflow:hidden;margin-bottom:10px;" class="gold-frame">
@@ -2708,7 +2723,7 @@ function toggleInfoBox(){
 <!-- رسالة الزائر في السجل -->
 <div id="sessions_guest_msg" style="display:none;flex:1;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 0 10px;">
   <div style="width:100%;display:flex;justify-content:center;padding-bottom:10px;">
-    <img src="./math-logo.png" alt="" style="width:min(80vw,340px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 20px rgba(212,168,67,0.25));">
+    <img src="./math-logo.png" alt="" class="app-logo-glow" style="width:min(80vw,340px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 20px rgba(212,168,67,0.25));">
   </div>
   <div style="font-size:32px;margin-bottom:10px;">🔒</div>
   <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:16px;color:var(--gold);margin-bottom:8px;">سجّل دخولك لعرض السجل</div>
@@ -3635,7 +3650,7 @@ function toggleInfoBox(){
           <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:13px;color:var(--gold);margin-bottom:3px;">قيد الهاند الذكي</div>
           <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
           <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-          <span class="cr-version" style="font-size:10px;color:var(--red);">V5.3.4</span>
+          <span class="cr-version" style="font-size:10px;color:var(--red);">V5.4</span>
           <span style="font-size:10px;color:var(--red);"> · 2026</span>
         </div>
       </div>
@@ -7196,7 +7211,7 @@ function rtSubmit(){
     'الجوانب: ' + tagStr + '\n' +
     'التعليق: ' + (comment || 'لا يوجد') + '\n' +
     'التاريخ: ' + date + '\n\n' +
-    'Smart Hand Score V5.3.4'
+    'Smart Hand Score V5.4'
   );
   var subject = encodeURIComponent('تقييم — ' + stars + ' نجوم');
   var mailtoLink = 'mailto:sultan@handcards.app?subject=' + subject + '&body=' + mailBody;
@@ -7361,7 +7376,7 @@ document.getElementById('settings_panel').addEventListener('transitionend', _upd
 
 <script>
 /* ═══════════════════════════════════════════════
-   AUTH SYSTEM — HandCards V5.3.4
+   AUTH SYSTEM — HandCards V5.4
    البيانات تُحفظ في localStorage تحت مفتاح hc_auth
 ═══════════════════════════════════════════════ */
 
@@ -8475,7 +8490,7 @@ function supSubmit(){
     'البريد: ' + email + '\n' +
     'نوع الطلب: ' + typeLabel + '\n\n' +
     'الرسالة:\n' + msg + '\n\n' +
-    'Smart Hand Score V5.3.4'
+    'Smart Hand Score V5.4'
   );
   window.location.href = 'mailto:support@handcards.app?subject=' + subject + '&body=' + body;
 
@@ -8534,7 +8549,7 @@ function shareReport(){
 
   lines.push('');
   lines.push('─────────────────────');
-  lines.push('HandCards V5.3.4 · قيد الهاند الذكي');
+  lines.push('HandCards V5.4 · قيد الهاند الذكي');
 
   var text = lines.join('\n');
 
@@ -8818,7 +8833,7 @@ function shareCertText(){
     intro + ' بأن اللاعب ' + fullName + '\n' +
     bodyText + '\n\n' +
     'قيد الهاند الذكي · جميع الحقوق محفوظة\n' +
-    'تصميم سلطان بن طوق المري · V5.3.4 · 2026';
+    'تصميم سلطان بن طوق المري · V5.4 · 2026';
 
   if(navigator.share){
     navigator.share({ title: 'شهادة محترف — ' + fullName, text: text })
