@@ -1791,7 +1791,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.4.3</span>
+        <span style="font-size:10px;color:var(--red);">V5.4.4</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1816,7 +1816,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.4.3</span>
+        <span style="font-size:10px;color:var(--red);">V5.4.4</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1837,7 +1837,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.4.3</span>
+        <span style="font-size:10px;color:var(--red);">V5.4.4</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1872,7 +1872,7 @@ window.addEventListener('load', function(){
   <div style="text-align:center;">
     <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
     <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-    <span style="font-size:10px;color:var(--red);">V5.4.3</span>
+    <span style="font-size:10px;color:var(--red);">V5.4.4</span>
     <span style="font-size:10px;color:var(--red);"> · 2026</span>
   </div>
 </div>
@@ -2457,7 +2457,7 @@ function toggleInfoBox(){
             <div style="font-family:'Tajawal',sans-serif;font-size:7px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
             <div style="font-family:'Tajawal',sans-serif;font-size:7px;color:rgba(255,255,255,0.5);margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
             <div style="height:1px;background:rgba(200,168,75,0.5);margin-bottom:3px;"></div>
-            <div style="font-size:7px;color:var(--red);">V5.4.3 · 2026</div>
+            <div style="font-size:7px;color:var(--red);">V5.4.4 · 2026</div>
           </div>
 
           <!-- وسط: شعار فقط -->
@@ -2507,7 +2507,7 @@ function toggleInfoBox(){
       <div style="text-align:center;">
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.4.3</span>
+        <span style="font-size:10px;color:var(--red);">V5.4.4</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -3688,7 +3688,7 @@ function toggleInfoBox(){
           <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:13px;color:var(--gold);margin-bottom:3px;">قيد الهاند الذكي</div>
           <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
           <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-          <span class="cr-version" style="font-size:10px;color:var(--red);">V5.4.3</span>
+          <span class="cr-version" style="font-size:10px;color:var(--red);">V5.4.4</span>
           <span style="font-size:10px;color:var(--red);"> · 2026</span>
         </div>
       </div>
@@ -6072,31 +6072,37 @@ function toggleResetDefaults(){
 function confirmTogglePwd(){
   const inp=document.getElementById('toggle_pwd_inp');
   const err=document.getElementById('toggle_pwd_err');
+
+  // معالجة تغيير البريد الإلكتروني من صفحة الإعدادات (يتطلب كلمة مرور حساب Firebase الحقيقية، وليست قفل الإعدادات)
+  if(window._prof_pending_action === 'email' && window._prof_pending_email){
+    var pendingEmail = window._prof_pending_email;
+    var pwdEntered = inp.value;
+    fbUpdateEmail(pwdEntered, pendingEmail).then(function(){
+      document.getElementById('toggle_pwd_overlay').classList.remove('show');
+      APP_EMAIL = pendingEmail;
+      saveAppSettings();
+      var pe = document.getElementById('prof_email');
+      if(pe) pe.value = pendingEmail;
+      updateHomeReg();
+      showToast('✅ تم تغيير البريد الإلكتروني');
+      window._prof_pending_email = null;
+      window._prof_pending_action = null;
+      inp.value='';
+    }).catch(function(errObj){
+      var msg = '⚠️ تعذر تغيير البريد الإلكتروني';
+      if(errObj && (errObj.code==='auth/wrong-password'||errObj.code==='auth/invalid-credential')) msg='❌ كلمة المرور خاطئة';
+      else if(errObj && errObj.code==='auth/email-already-in-use') msg='⚠️ هذا البريد مستخدم مسبقاً';
+      err.textContent = msg;
+      inp.value=''; inp.focus();
+    });
+    return;
+  }
+
   if(inp.value !== APP_PWD){
     err.textContent='❌ كلمة المرور خاطئة';
     inp.value=''; inp.focus(); return;
   }
   document.getElementById('toggle_pwd_overlay').classList.remove('show');
-
-  // معالجة تغيير البريد الإلكتروني من صفحة الإعدادات
-  if(window._prof_pending_action === 'email' && window._prof_pending_email){
-    var d2 = authGetData();
-    if(d2){
-      d2.email = window._prof_pending_email;
-      authSaveData(d2);
-      APP_EMAIL = window._prof_pending_email;
-      saveAppSettings();
-      // تحديث الواجهة
-      var pe = document.getElementById('prof_email');
-      if(pe) pe.value = window._prof_pending_email;
-      updateHomeReg();
-      showToast('✅ تم تغيير البريد الإلكتروني');
-    }
-    window._prof_pending_email = null;
-    window._prof_pending_action = null;
-    inp.value='';
-    return;
-  }
 
   if(_pendingToggle==='clear') _applyToggleClear();
   else if(_pendingToggle==='reset') _applyToggleReset();
@@ -6378,20 +6384,20 @@ function saveSettings(){
   if(_profPwdChg){
     if(_profPwdNew !== _profPwdNew2){ showToast('❌ كلمتا المرور غير متطابقتين'); return; }
     if(_profPwdNew.length < 8){ showToast('❌ كلمة المرور يجب أن تكون ٨ أحرف على الأقل'); return; }
-    var _authDataPwd = authGetData();
-    var _currentPwdForChg = APP_PWD || (_authDataPwd && _authDataPwd.pwd ? _authDataPwd.pwd : '');
-    if(_currentPwdForChg && _profPwdOld !== _currentPwdForChg){ showToast('❌ كلمة المرور الحالية خاطئة'); return; }
-    APP_PWD = _profPwdNew;
-    // تحديث كلمة المرور في بيانات الحساب أيضاً
-    if(_authDataPwd){ _authDataPwd.pwd = _profPwdNew; authSaveData(_authDataPwd); }
-    saveAppSettings();
-    document.getElementById('prof_pwd_fields').style.display='none';
-    document.getElementById('prof_pwd_toggle').style.display='flex';
-    document.getElementById('prof_pwd_old').value='';
-    document.getElementById('prof_pwd_new').value='';
-    document.getElementById('prof_pwd_new2').value='';
-    showToast('✅ تم تغيير كلمة المرور بنجاح');
-    closePanel();
+    if(!_profPwdOld){ showToast('❌ أدخل كلمة المرور الحالية'); return; }
+    fbUpdatePassword(_profPwdOld, _profPwdNew).then(function(){
+      document.getElementById('prof_pwd_fields').style.display='none';
+      document.getElementById('prof_pwd_toggle').style.display='flex';
+      document.getElementById('prof_pwd_old').value='';
+      document.getElementById('prof_pwd_new').value='';
+      document.getElementById('prof_pwd_new2').value='';
+      showToast('✅ تم تغيير كلمة المرور بنجاح');
+      closePanel();
+    }).catch(function(err){
+      var msg='⚠️ تعذر تغيير كلمة المرور';
+      if(err && (err.code==='auth/wrong-password'||err.code==='auth/invalid-credential')) msg='❌ كلمة المرور الحالية خاطئة';
+      showToast(msg);
+    });
     return;
   }
 
@@ -6594,13 +6600,12 @@ function saveSettings(){
 
   // ⑫ حفظ الاسم الكامل في الملف الشخصي
   if(window._tempProfNameChg) {
-    var d = authGetData();
     var name = (document.getElementById('prof_name').value||'').trim();
-    if(d && name && name.length>=2) {
-      d.name = name;
-      authSaveData(d);
-      var wbn=document.getElementById('auth_welcome_name'); if(wbn) wbn.textContent=name;
-      var hwn=document.getElementById('home_welcome_name'); if(hwn) hwn.textContent=name;
+    if(name && name.length>=2) {
+      fbUpdateName(name).then(function(){
+        var wbn=document.getElementById('auth_welcome_name'); if(wbn) wbn.textContent=name;
+        var hwn=document.getElementById('home_welcome_name'); if(hwn) hwn.textContent=name;
+      }).catch(function(){ showToast('⚠️ تعذر تحديث الاسم'); });
     }
     window._tempProfNameChg = false;
   }
@@ -6620,18 +6625,13 @@ function saveSettings(){
     var d2 = authGetData();
     var newEmail = (document.getElementById('prof_email').value||'').trim().toLowerCase();
     if(d2 && newEmail && newEmail.includes('@')) {
-      if(d2.pwd) {
-        // يحتاج تأكيد كلمة المرور - نفتح الـ modal
-        window._prof_pending_email = newEmail;
-        var ti=document.getElementById('toggle_pwd_title'); if(ti) ti.textContent='🔒 تأكيد تغيير البريد الإلكتروني';
-        var pi=document.getElementById('toggle_pwd_inp'); if(pi){pi.value=''; pi.focus();}
-        var ei=document.getElementById('toggle_pwd_err'); if(ei) ei.textContent='';
-        window._prof_pending_action = 'email';
-        document.getElementById('toggle_pwd_overlay').classList.add('show');
-      } else {
-        d2.email = newEmail;
-        authSaveData(d2);
-      }
+      // تغيير البريد الإلكتروني بحساب Firebase يتطلب دائماً تأكيد كلمة المرور
+      window._prof_pending_email = newEmail;
+      var ti=document.getElementById('toggle_pwd_title'); if(ti) ti.textContent='🔒 تأكيد تغيير البريد الإلكتروني';
+      var pi=document.getElementById('toggle_pwd_inp'); if(pi){pi.value=''; pi.focus();}
+      var ei=document.getElementById('toggle_pwd_err'); if(ei) ei.textContent='';
+      window._prof_pending_action = 'email';
+      document.getElementById('toggle_pwd_overlay').classList.add('show');
     }
     window._tempProfEmailChg = false;
   }
@@ -7290,7 +7290,7 @@ function rtSubmit(){
     'الجوانب: ' + tagStr + '\n' +
     'التعليق: ' + (comment || 'لا يوجد') + '\n' +
     'التاريخ: ' + date + '\n\n' +
-    'Smart Hand Score V5.4.3'
+    'Smart Hand Score V5.4.4'
   );
   var subject = encodeURIComponent('تقييم — ' + stars + ' نجوم');
   var mailtoLink = 'mailto:sultan@handcards.app?subject=' + subject + '&body=' + mailBody;
@@ -7455,7 +7455,7 @@ document.getElementById('settings_panel').addEventListener('transitionend', _upd
 
 <script>
 /* ═══════════════════════════════════════════════
-   AUTH SYSTEM — HandCards V5.4.3
+   AUTH SYSTEM — HandCards V5.4.4
    البيانات تُحفظ في localStorage تحت مفتاح hc_auth
 ═══════════════════════════════════════════════ */
 
@@ -7555,6 +7555,43 @@ async function fbDeleteAccount(pwd) {
 fbAuth.onAuthStateChanged(function(user) {
   CURRENT_UID = user ? user.uid : null;
 });
+
+// تحديث الاسم بصفحة الملف الشخصي
+async function fbUpdateName(name) {
+  const user = fbAuth.currentUser;
+  if (!user) throw new Error('no-user');
+  await user.updateProfile({ displayName: name });
+  await fbDb.collection('users').doc(user.uid).set({ name }, { merge: true });
+  _authCacheProfile(user.email, name);
+}
+
+// تغيير كلمة المرور (يتطلب كلمة المرور الحالية لإعادة التحقق أمنياً)
+async function fbUpdatePassword(oldPwd, newPwd) {
+  const user = fbAuth.currentUser;
+  if (!user) throw new Error('no-user');
+  const cred = firebase.auth.EmailAuthProvider.credential(user.email, oldPwd);
+  await user.reauthenticateWithCredential(cred);
+  await user.updatePassword(newPwd);
+}
+
+// تغيير البريد الإلكتروني (يتطلب كلمة المرور الحالية لإعادة التحقق أمنياً)
+async function fbUpdateEmail(currentPwd, newEmail) {
+  const user = fbAuth.currentUser;
+  if (!user) throw new Error('no-user');
+  const cred = firebase.auth.EmailAuthProvider.credential(user.email, currentPwd);
+  await user.reauthenticateWithCredential(cred);
+  const oldEmail = user.email;
+  await user.updateEmail(newEmail);
+  await fbDb.collection('users').doc(user.uid).set({ email: newEmail }, { merge: true });
+  // تحديث الكاش المحلي ونقل جلسة الدخول للبريد الجديد
+  try {
+    const all = authGetAllAccounts();
+    if (all[oldEmail]) { delete all[oldEmail]; }
+    localStorage.setItem(ACCOUNTS_KEY, JSON.stringify(all));
+  } catch(e) {}
+  _authCacheProfile(newEmail, user.displayName || '');
+  localStorage.setItem(AUTH_KEY, JSON.stringify({ email: newEmail, loggedOut: false }));
+}
 
 /* ─── إظهار / إخفاء صفحة التحقق ─── */
 function authShow() {
@@ -7978,85 +8015,89 @@ function authDoRegister() {
 
   if (!name)  { showToast('⚠️ الرجاء إدخال الاسم الكامل'); return; }
   if (!email || !email.includes('@')) { showToast('⚠️ البريد الإلكتروني غير صحيح'); return; }
-  
+
   const pwdErr = authValidatePwd(pwd);
   if (pwdErr) { showToast('⚠️ ' + pwdErr); return; }
   if (pwd !== pwd2) { showToast('⚠️ كلمتا المرور غير متطابقتين'); return; }
   if (!priv) { showToast('⚠️ يجب الموافقة على سياسة الخصوصية'); return; }
 
-  // التحقق من تكرار البريد في القاموس
-  const allAccounts = authGetAllAccounts();
-  if (allAccounts[email]) {
-    showToast('⚠️ هذا البريد مسجّل مسبقاً — سجّل دخولك', 3000);
-    return;
-  }
+  const submitBtn = document.getElementById('reg_submit_btn');
+  if(submitBtn){ submitBtn.style.pointerEvents='none'; }
+  showToast('⏳ جاري إنشاء الحساب...');
 
-  authSaveData({ name, email, pwd });
+  fbSignup(name, email, pwd).then(function(){
+    // ١- إعادة ضبط كاملة
+    APP_PWD = pwd; APP_EMAIL = email;
+    penalties.length = 0;
+    for(let i=0;i<4;i++){const el=document.getElementById(`pname_${i}`);if(el){el.value='';el.disabled=false;}}
 
-  // ١- إعادة ضبط كاملة
-  APP_PWD = pwd; APP_EMAIL = email;
-  penalties.length = 0;
-  for(let i=0;i<4;i++){const el=document.getElementById(`pname_${i}`);if(el){el.value='';el.disabled=false;}}
+    // ٢- المربعات: مربع الأسماء مفتوح افتراضياً، الباقي مغلق
+    PNAMES_ENABLED = true;   // مربع الأسماء مفتوح
+    HC_ENABLED     = false;  // مربع المنافسة مغلق
+    HP_ENABLED     = false;  // مربع المخالفات مغلق
+    applyPNamesSection(); applyHCSection(); applyHPSection();
 
-  // ٢- المربعات: مربع الأسماء مفتوح افتراضياً، الباقي مغلق
-  PNAMES_ENABLED = true;   // مربع الأسماء مفتوح
-  HC_ENABLED     = false;  // مربع المنافسة مغلق
-  HP_ENABLED     = false;  // مربع المخالفات مغلق
-  applyPNamesSection(); applyHCSection(); applyHPSection();
+    // ٣- حفظ الإعدادات الافتراضية للمستخدم الجديد
+    N_ROUNDS = DEFAULT_ROUNDS;
+    HT_HIND.length = 0;
+    DEFAULT_HT_HIND.forEach(h => HT_HIND.push(Object.assign({},h)));
+    saveAppSettings();
 
-  // ٣- حفظ الإعدادات الافتراضية للمستخدم الجديد
-  N_ROUNDS = DEFAULT_ROUNDS;
-  HT_HIND.length = 0;
-  DEFAULT_HT_HIND.forEach(h => HT_HIND.push(Object.assign({},h)));
-  saveAppSettings();
+    // ٤- تهيئة الجدول والنتائج
+    try {
+      rebuildTable(); unlockSession(); renderPenalties();
+      renderSessionList(); renderTop3();
+      try { loadSettingsUI(); } catch(e2) {}
+    } catch(e) {}
+    setTimeout(closeAllAccordions, 50);
 
-  // ٤- تهيئة الجدول والنتائج
-  try {
-    rebuildTable(); unlockSession(); renderPenalties();
-    renderSessionList(); renderTop3();
-    try { loadSettingsUI(); } catch(e2) {}
-  } catch(e) {}
-  setTimeout(closeAllAccordions, 50);
+    // حفظ اسم المجلس
+    const councilVal = (document.getElementById('reg_council')||{}).value || '';
+    if (councilVal.trim()) localStorage.setItem('hc_session_title', councilVal.trim());
+    saveAppSettings(); // حفظ المجلس داخل settings الحساب
+    applySessionTitle();
 
-  // حفظ اسم المجلس
-  const councilVal = (document.getElementById('reg_council')||{}).value || '';
-  if (councilVal.trim()) localStorage.setItem('hc_session_title', councilVal.trim());
-  saveAppSettings(); // حفظ المجلس داخل settings الحساب
-  applySessionTitle();
+    // مسح جميع حقول التسجيل
+    document.getElementById('reg_name').value = '';
+    document.getElementById('reg_council').value = '';
+    document.getElementById('reg_email').value = '';
+    document.getElementById('reg_pwd').value = '';
+    document.getElementById('reg_pwd2').value = '';
+    document.getElementById('reg_privacy').checked = false;
+    authPrivacyToggle();
+    const strBar = document.getElementById('auth_str_bar');
+    const strLabel = document.getElementById('auth_str_label');
+    if (strBar) { strBar.style.width = '0'; strBar.style.background = ''; }
+    if (strLabel) strLabel.textContent = '';
+    // أغلق الـ accordion
+    const regBody = document.getElementById('auth_register_body');
+    const regArrow = document.getElementById('reg_toggle_arrow');
+    if (regBody) regBody.classList.add('auth-accordion-closed');
+    if (regArrow) regArrow.classList.remove('open');
 
-  // مسح جميع حقول التسجيل
-  document.getElementById('reg_name').value = '';
-  document.getElementById('reg_council').value = '';
-  document.getElementById('reg_email').value = '';
-  document.getElementById('reg_pwd').value = '';
-  document.getElementById('reg_pwd2').value = '';
-  document.getElementById('reg_privacy').checked = false;
-  authPrivacyToggle();
-  const strBar = document.getElementById('auth_str_bar');
-  const strLabel = document.getElementById('auth_str_label');
-  if (strBar) { strBar.style.width = '0'; strBar.style.background = ''; }
-  if (strLabel) strLabel.textContent = '';
-  // أغلق الـ accordion
-  const regBody = document.getElementById('auth_register_body');
-  const regArrow = document.getElementById('reg_toggle_arrow');
-  if (regBody) regBody.classList.add('auth-accordion-closed');
-  if (regArrow) regArrow.classList.remove('open');
-
-  // أظهر شريط الترحيب الثابت
-  const wb = document.getElementById('auth_welcome_bar');
-  const wbn = document.getElementById('auth_welcome_name');
-  if (wb) wb.style.display = 'block';
+    // أظهر شريط الترحيب الثابت
+    const wb = document.getElementById('auth_welcome_bar');
+    const wbn = document.getElementById('auth_welcome_name');
+    if (wb) wb.style.display = 'block';
     var _alb=document.getElementById('auth_logout_btn'); if(_alb) _alb.style.display='flex';
-  var _alb=document.getElementById('auth_logout_btn'); if(_alb) _alb.style.display='flex';
-  if (wbn) wbn.textContent = name;
+    if (wbn) wbn.textContent = name;
 
-  // تحديث الواجهة للمستخدم الجديد
-  try { renderSessionList(); renderTop3(); } catch(e) {}
-  updateGuestBars(true);
+    // تحديث الواجهة للمستخدم الجديد
+    try { renderSessionList(); renderTop3(); } catch(e) {}
+    updateGuestBars(true);
+    try { hcSyncSessionsFromCloud(); } catch(e){}
 
-  SFX.win();
-  showToast('✅ مرحباً ' + name + ' 👋', 3000);
-  authHide();
+    SFX.win();
+    showToast('✅ مرحباً ' + name + ' 👋', 3000);
+    authHide();
+  }).catch(function(err){
+    if(submitBtn){ submitBtn.style.pointerEvents='auto'; }
+    var msg = '⚠️ تعذر إنشاء الحساب';
+    if(err && err.code === 'auth/email-already-in-use') msg = '⚠️ هذا البريد الإلكتروني مسجّل مسبقاً — سجّل دخولك';
+    else if(err && err.code === 'auth/invalid-email') msg = '⚠️ البريد الإلكتروني غير صحيح';
+    else if(err && err.code === 'auth/weak-password') msg = '⚠️ كلمة المرور ضعيفة جداً';
+    showToast(msg, 3500);
+  });
 }
 
 /* ─── تسجيل الدخول ─── */
@@ -8652,7 +8693,7 @@ function supSubmit(){
     'البريد: ' + email + '\n' +
     'نوع الطلب: ' + typeLabel + '\n\n' +
     'الرسالة:\n' + msg + '\n\n' +
-    'Smart Hand Score V5.4.3'
+    'Smart Hand Score V5.4.4'
   );
   window.location.href = 'mailto:support@handcards.app?subject=' + subject + '&body=' + body;
 
@@ -8711,7 +8752,7 @@ function shareReport(){
 
   lines.push('');
   lines.push('─────────────────────');
-  lines.push('HandCards V5.4.3 · قيد الهاند الذكي');
+  lines.push('HandCards V5.4.4 · قيد الهاند الذكي');
 
   var text = lines.join('\n');
 
@@ -8995,7 +9036,7 @@ function shareCertText(){
     intro + ' بأن اللاعب ' + fullName + '\n' +
     bodyText + '\n\n' +
     'قيد الهاند الذكي · جميع الحقوق محفوظة\n' +
-    'تصميم سلطان بن طوق المري · V5.4.3 · 2026';
+    'تصميم سلطان بن طوق المري · V5.4.4 · 2026';
 
   if(navigator.share){
     navigator.share({ title: 'شهادة محترف — ' + fullName, text: text })
