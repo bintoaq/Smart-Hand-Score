@@ -1,6 +1,6 @@
 /* Smart Hand Score — Service Worker */
 /* عند كل رفع نسخة جديدة من التطبيق: غيّر رقم CACHE أدناه (مثلاً v4.10) حتى تُمسح النسخة القديمة من أجهزة المستخدمين تلقائياً */
-const CACHE = 'smart-hand-score-v5.4.1';
+const CACHE = 'smart-hand-score-v5.4.2';
 
 const APP_SHELL = [
   './',
@@ -24,7 +24,7 @@ self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(CACHE).then((c) =>
       Promise.all(
-        APP_SHELL.map((url) => c.add(url).catch(() => {})) // ملف ناقص واحد (مثل الصوت) ما يوقف تخزين الباقي
+        APP_SHELL.map((url) => c.add(url).catch(() => {}))
       ).then(() => c.addAll(FONTS).catch(() => {}))
     )
   );
@@ -43,7 +43,6 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET') return;
 
-  // للتنقل أو تحميل الصفحة نفسها: جرّب الشبكة أولاً عشان يوصل آخر تحديث، ولو ما فيه اتصال ارجع للنسخة المخزنة
   const isPageRequest = e.request.mode === 'navigate' ||
     e.request.destination === 'document' ||
     e.request.url.endsWith('/index.html') ||
@@ -62,7 +61,6 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
-  // لباقي الملفات (خطوط، أيقونات): من الكاش أولاً، ولو مو موجودة اجلبها وخزّنها
   e.respondWith(
     caches.match(e.request).then((cached) => {
       if (cached) return cached;
