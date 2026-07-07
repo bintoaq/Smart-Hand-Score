@@ -13,6 +13,26 @@
 <link rel="apple-touch-icon" href="./apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Bebas+Neue&family=Cairo:wght@700;900&family=Reem+Kufi:wght@700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<!-- Firebase SDK (compat build — يعمل مباشرة بدون npm/webpack) -->
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyD4HTmUkpjtsTbizkh0e5gyWn5p5ziuu18",
+    authDomain: "smart-hand-score-2026.firebaseapp.com",
+    projectId: "smart-hand-score-2026",
+    storageBucket: "smart-hand-score-2026.firebasestorage.app",
+    messagingSenderId: "824032313038",
+    appId: "1:824032313038:web:8cbe9a1f1c608317c75a9f",
+    measurementId: "G-L2ZX915C46"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const fbAuth = firebase.auth();
+  const fbDb = firebase.firestore();
+  // يسمح للتطبيق يشتغل بدون إنترنت ويرفع التغييرات لاحقاً تلقائياً
+  fbDb.enablePersistence({ synchronizeTabs: true }).catch(()=>{});
+</script>
 <style>
 :root{--bg-img: none;
   --red:#9B1C1C;--red2:#7f1d1d;--gold:#D4A843;
@@ -3071,11 +3091,27 @@ function toggleInfoBox(){
           <div class="setting-row">
             <div class="setting-row-info">
               <div class="setting-row-label">تخزين نسخة احتياطية</div>
-              <div class="setting-row-desc">حفظ واستعادة بيانات التطبيق — قادمة قريباً</div>
+              <div class="setting-row-desc" id="backup_status_desc">مفعّلة تلقائياً طالما مسجّل دخول</div>
             </div>
-            <button onclick="showToast('💾 النسخة الاحتياطية قادمة قريباً')" style="width:110px;min-width:110px;max-width:110px;border-radius:22px;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;padding:10px 0;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.07);color:var(--muted);cursor:pointer;white-space:nowrap;text-align:center;flex-shrink:0;">قريباً</button>
+            <button onclick="hcManualRestore()" style="width:110px;min-width:110px;max-width:110px;border-radius:22px;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;padding:10px 0;border:1px solid rgba(212,168,67,0.4);background:rgba(212,168,67,0.1);color:var(--gold);cursor:pointer;white-space:nowrap;text-align:center;flex-shrink:0;">استرجاع</button>
           </div>
         </div>
+        <script>
+          function hcManualRestore(){
+            if(!CURRENT_UID){ showToast('⚠️ يجب تسجيل الدخول أولاً'); return; }
+            showToast('⏳ جاري التحقق من النسخة السحابية...');
+            fbDb.collection('users').doc(CURRENT_UID).get().then(function(doc){
+              if(!doc.exists || !Array.isArray(doc.data().sessions) || doc.data().sessions.length===0){
+                showToast('ℹ️ لا توجد نسخة احتياطية محفوظة بعد'); return;
+              }
+              var key = getDbKey();
+              if(!key) return;
+              localStorage.setItem(key, JSON.stringify(doc.data().sessions));
+              try { renderSessionList(); renderTop3(); } catch(e){}
+              showToast('☁️ تم استرجاع '+doc.data().sessions.length+' جولة من النسخة الاحتياطية');
+            }).catch(function(){ showToast('⚠️ تعذر الاتصال بالسحابة'); });
+          }
+        </script>
 
         <div style="border-top:1px solid rgba(212,168,67,0.1);margin:14px 0;"></div>
 
@@ -5015,10 +5051,39 @@ function getSessions(){
   try{return JSON.parse(localStorage.getItem(key)||'[]');}catch{return[];}
 }
 
+let _hcCloudSyncTimer = null;
 function saveSessions(arr){
   var key=getDbKey();
   if(!key){ showToast('⚠️ يجب تسجيل الدخول لحفظ الجولات'); return; }
   try{localStorage.setItem(key,JSON.stringify(arr));}catch(e){showToast('⚠️ تعذر الحفظ');}
+  // مزامنة مع النسخة الاحتياطية السحابية (Firestore) — بدون تعطيل الحفظ المحلي الفوري
+  try {
+    if (CURRENT_UID) {
+      clearTimeout(_hcCloudSyncTimer);
+      _hcCloudSyncTimer = setTimeout(function(){
+        fbDb.collection('users').doc(CURRENT_UID).set({ sessions: arr, updatedAt: Date.now() }, { merge: true }).catch(function(){});
+      }, 600);
+    }
+  } catch(e){}
+}
+
+// يسحب النسخة الاحتياطية من Firestore (يُستخدم عند تسجيل الدخول لاسترجاع البيانات على جهاز جديد)
+function hcSyncSessionsFromCloud(){
+  if (!CURRENT_UID) return;
+  fbDb.collection('users').doc(CURRENT_UID).get().then(function(doc){
+    if (!doc.exists) return;
+    var cloudSessions = doc.data().sessions;
+    if (!Array.isArray(cloudSessions)) return;
+    var key = getDbKey();
+    if (!key) return;
+    var localSessions = getSessions();
+    // لا نستبدل بيانات محلية أحدث أو أكبر بالخطأ — نأخذ النسخة السحابية فقط لو المحلية فارغة
+    if (localSessions.length === 0 && cloudSessions.length > 0) {
+      localStorage.setItem(key, JSON.stringify(cloudSessions));
+      try { renderSessionList(); renderTop3(); } catch(e){}
+      showToast('☁️ تم استرجاع نسخة احتياطية من بياناتك');
+    }
+  }).catch(function(){});
 }
 
 function saveSession(){
@@ -5995,7 +6060,7 @@ function toggleResetDefaults(){
 function confirmTogglePwd(){
   const inp=document.getElementById('toggle_pwd_inp');
   const err=document.getElementById('toggle_pwd_err');
-  if(inp.value !== APP_PWD && inp.value !== 'Bintoaq'){
+  if(inp.value !== APP_PWD){
     err.textContent='❌ كلمة المرور خاطئة';
     inp.value=''; inp.focus(); return;
   }
@@ -6225,7 +6290,7 @@ function saveChangePwd(){
   const err   = document.getElementById('chgpwd_err');
 
   if(!oldP){ err.textContent='⚠️ أدخل كلمة المرور الحالية'; return; }
-  if(oldP !== APP_PWD && oldP !== 'Bintoaq'){ err.textContent='❌ كلمة المرور الحالية خاطئة'; return; }
+  if(oldP !== APP_PWD){ err.textContent='❌ كلمة المرور الحالية خاطئة'; return; }
   if(!newP){ err.textContent='⚠️ أدخل كلمة المرور الجديدة'; return; }
   if(newP.length < 3){ err.textContent='❌ كلمة المرور ٣ أحرف على الأقل'; return; }
   if(newP !== newP2){ err.textContent='❌ كلمتا المرور غير متطابقتين'; return; }
@@ -6245,7 +6310,7 @@ function saveChangeEmail(){
 
   if(!newEmail){ err.textContent='⚠️ أدخل البريد الإلكتروني الجديد'; return; }
   if(!validEmail.test(newEmail)){ err.textContent='❌ البريد الإلكتروني غير صحيح'; return; }
-  if(APP_PWD && pwd !== APP_PWD && pwd !== 'Bintoaq'){ err.textContent='❌ كلمة المرور غير صحيحة'; return; }
+  if(APP_PWD && pwd !== APP_PWD){ err.textContent='❌ كلمة المرور غير صحيحة'; return; }
 
   // تطبيق التغيير مباشرة
   APP_EMAIL = newEmail;
@@ -6303,7 +6368,7 @@ function saveSettings(){
     if(_profPwdNew.length < 8){ showToast('❌ كلمة المرور يجب أن تكون ٨ أحرف على الأقل'); return; }
     var _authDataPwd = authGetData();
     var _currentPwdForChg = APP_PWD || (_authDataPwd && _authDataPwd.pwd ? _authDataPwd.pwd : '');
-    if(_currentPwdForChg && _profPwdOld !== _currentPwdForChg && _profPwdOld !== 'Bintoaq'){ showToast('❌ كلمة المرور الحالية خاطئة'); return; }
+    if(_currentPwdForChg && _profPwdOld !== _currentPwdForChg){ showToast('❌ كلمة المرور الحالية خاطئة'); return; }
     APP_PWD = _profPwdNew;
     // تحديث كلمة المرور في بيانات الحساب أيضاً
     if(_authDataPwd){ _authDataPwd.pwd = _profPwdNew; authSaveData(_authDataPwd); }
@@ -6322,7 +6387,7 @@ function saveSettings(){
   if(_profDelActive){
     var _authDataForDel = authGetData();
     var _realPwd = APP_PWD || (_authDataForDel && _authDataForDel.pwd ? _authDataForDel.pwd : '');
-    if(_realPwd && _profDelPwd !== _realPwd && _profDelPwd !== 'Bintoaq'){ showToast('❌ كلمة المرور خاطئة'); return; }
+    if(_realPwd && _profDelPwd !== _realPwd){ showToast('❌ كلمة المرور خاطئة'); return; }
     profDeleteAccount(); return;
   }
 
@@ -6353,7 +6418,7 @@ function saveSettings(){
     if(APP_PWD){
       const oldEl = document.getElementById('set_pwd_old');
       const oldVal = oldEl ? (oldEl.dataset.realvalue || oldEl.value || '') : '';
-      if(oldVal !== APP_PWD && oldVal !== 'Bintoaq'){
+      if(oldVal !== APP_PWD){
         showToast('❌ كلمة المرور القديمة خاطئة'); return;
       }
     }
@@ -6392,7 +6457,7 @@ function saveSettings(){
       if(APP_PWD){
         const changePwdEl = document.getElementById('set_email_change_pwd');
         const enteredPwd = changePwdEl ? (changePwdEl.dataset.realvalue || changePwdEl.value || '') : '';
-        if(enteredPwd !== APP_PWD && enteredPwd !== 'Bintoaq'){
+        if(enteredPwd !== APP_PWD){
           showToast('❌ كلمة المرور خاطئة — لا يمكن تغيير البريد'); return;
         }
       }
@@ -6646,7 +6711,7 @@ function doConfirmClearSessions(){
       err.textContent='❌ يجب إدخال كلمة المرور';
       inp.focus(); return;
     }
-    if(inp.value !== APP_PWD && inp.value !== 'Bintoaq'){
+    if(inp.value !== APP_PWD){
       err.textContent='❌ كلمة المرور خاطئة';
       inp.value=''; inp.focus(); return;
     }
@@ -6670,7 +6735,7 @@ function doResetDefaults(){
   const _activePwd = (_authD && _authD.pwd) ? _authD.pwd : APP_PWD;
   if(_activePwd){
     const inp=document.getElementById('reset_pwd_inp');
-    if(inp.value !== _activePwd && inp.value !== 'Bintoaq'){
+    if(inp.value !== _activePwd){
       document.getElementById('reset_pwd_err').textContent='❌ كلمة المرور خاطئة';
       inp.value=''; inp.focus(); return;
     }
@@ -7393,36 +7458,91 @@ function _syncAppVars(email, pwd) {
   } catch(e) {}
 }
 
-// مفتاح قاموس جميع الحسابات المسجّلة على هذا الجهاز
-const ACCOUNTS_KEY = 'hc_accounts_v1';
+/* ═══════════════════════════════════════════════
+   FIREBASE AUTH — الحساب الحقيقي والمزامنة
+   الحسابات وكلمات المرور الآن تُدار بالكامل عبر Firebase Authentication
+   (لا تُخزَّن أي كلمة مرور على الجهاز أو بالكود بعد الآن).
+   نُبقي على "كاش" محلي (localStorage) بنفس الشكل القديم حتى تستمر
+   بقية أجزاء التطبيق بالعمل كما هي دون تعديل كل مكان بالكود.
+═══════════════════════════════════════════════ */
+
+const ACCOUNTS_KEY = 'hc_accounts_v1'; // كاش محلي فقط (اسم + بريد)، بدون كلمات مرور
+let CURRENT_UID = null; // يُحدَّث تلقائياً من Firebase عند تسجيل الدخول/الخروج
 
 function authGetAllAccounts() {
   try { return JSON.parse(localStorage.getItem(ACCOUNTS_KEY) || '{}'); } catch { return {}; }
 }
 
-function authSaveAccount(obj) {
+function _authCacheProfile(email, name) {
   try {
     const all = authGetAllAccounts();
-    all[obj.email] = { name: obj.name, email: obj.email, pwd: obj.pwd };
+    all[email] = { name: name || all[email]?.name || '', email: email };
     localStorage.setItem(ACCOUNTS_KEY, JSON.stringify(all));
   } catch(e) {}
 }
 
+// authGetData تبقى متوافقة مع الاستخدام القديم بالكود بالكامل (قراءة متزامنة من الكاش)
 function authGetData() {
   try {
     const session = JSON.parse(localStorage.getItem(AUTH_KEY) || 'null');
     if (!session || session.loggedOut || !session.email) return null;
     const all = authGetAllAccounts();
-    return all[session.email] || null;
+    return all[session.email] || { name: '', email: session.email };
   } catch { return null; }
 }
 
-function authSaveData(obj) {
-  try {
-    authSaveAccount(obj);
-    localStorage.setItem(AUTH_KEY, JSON.stringify({ email: obj.email, loggedOut: false }));
-  } catch(e) {}
+// نداء فعلي لإنشاء حساب حقيقي عبر Firebase (يستبدل التخزين المحلي لكلمة المرور)
+async function fbSignup(name, email, pwd) {
+  const cred = await fbAuth.createUserWithEmailAndPassword(email, pwd);
+  await cred.user.updateProfile({ displayName: name });
+  await fbDb.collection('users').doc(cred.user.uid).set({ name, email }, { merge: true });
+  CURRENT_UID = cred.user.uid;
+  _authCacheProfile(email, name);
+  localStorage.setItem(AUTH_KEY, JSON.stringify({ email, loggedOut: false }));
+  return cred.user;
 }
+
+// نداء فعلي لتسجيل الدخول عبر Firebase
+async function fbLogin(email, pwd) {
+  const cred = await fbAuth.signInWithEmailAndPassword(email, pwd);
+  CURRENT_UID = cred.user.uid;
+  let name = cred.user.displayName || '';
+  try {
+    const doc = await fbDb.collection('users').doc(cred.user.uid).get();
+    if (doc.exists && doc.data().name) name = doc.data().name;
+  } catch(e) {}
+  _authCacheProfile(email, name);
+  localStorage.setItem(AUTH_KEY, JSON.stringify({ email, loggedOut: false }));
+  return cred.user;
+}
+
+// نداء فعلي لتسجيل الخروج عبر Firebase
+async function fbLogout() {
+  try { await fbAuth.signOut(); } catch(e) {}
+  CURRENT_UID = null;
+}
+
+// إرسال بريد إعادة تعيين كلمة المرور الحقيقي (يستبدل أسلوب الكود الوهمي القديم)
+async function fbSendPasswordReset(email) {
+  return fbAuth.sendPasswordResetEmail(email);
+}
+
+// حذف الحساب فعلياً من Firebase (Authentication + Firestore)
+async function fbDeleteAccount(pwd) {
+  const user = fbAuth.currentUser;
+  if (!user) throw new Error('no-user');
+  const cred = firebase.auth.EmailAuthProvider.credential(user.email, pwd);
+  await user.reauthenticateWithCredential(cred);
+  const uid = user.uid;
+  try { await fbDb.collection('users').doc(uid).delete(); } catch(e) {}
+  await user.delete();
+  CURRENT_UID = null;
+}
+
+// يتابع حالة تسجيل الدخول تلقائياً (مثلاً عند فتح التطبيق من جديد على نفس الجهاز)
+fbAuth.onAuthStateChanged(function(user) {
+  CURRENT_UID = user ? user.uid : null;
+});
 
 /* ─── إظهار / إخفاء صفحة التحقق ─── */
 function authShow() {
@@ -7603,35 +7723,39 @@ function rpDoRegister() {
   if (!document.getElementById('rp_privacy').checked) { showToast('⚠️ يجب الموافقة على سياسة الخصوصية'); return; }
   if (authGetData()) { showToast('⚠️ أنت مسجّل دخول بالفعل'); return; }
 
-  // منع تسجيل بريد مستخدم مسبقاً
-  try {
-    var _existing = JSON.parse(localStorage.getItem(AUTH_KEY)||'null');
-    if(_existing && _existing.email && _existing.email.toLowerCase() === email){
-      showToast('⚠️ هذا البريد الإلكتروني مسجّل مسبقاً'); return;
-    }
-  } catch(e){}
+  var btn = document.getElementById('rp_submit_btn');
+  if(btn){ btn.style.pointerEvents='none'; }
+  showToast('⏳ جاري إنشاء الحساب...');
 
-  // حفظ البيانات
-  authSaveData({ name, email, pwd });
-  _syncAppVars(email, pwd);
+  fbSignup(name, email, pwd).then(function(){
+    _syncAppVars(email, pwd);
 
-  // محو جميع حقول panel التسجيل
-  ['rp_name','rp_email','rp_pwd','rp_pwd2'].forEach(function(id){
-    var el = document.getElementById(id); if(el) el.value='';
+    // محو جميع حقول panel التسجيل
+    ['rp_name','rp_email','rp_pwd','rp_pwd2'].forEach(function(id){
+      var el = document.getElementById(id); if(el) el.value='';
+    });
+    var prv = document.getElementById('rp_privacy'); if(prv) prv.checked=false;
+    var bar = document.getElementById('rp_str_bar'); if(bar){bar.style.width='0';bar.style.background='';}
+    var lbl = document.getElementById('rp_str_label'); if(lbl) lbl.textContent='';
+    if(btn){btn.style.opacity='0.45';btn.style.pointerEvents='none';}
+
+    // تحديث شريط الترحيب في صفحة الحساب
+    var wb = document.getElementById('auth_welcome_bar');
+    var wbn = document.getElementById('auth_welcome_name');
+    if(wb) wb.style.display='block';
+    var _alb=document.getElementById('auth_logout_btn'); if(_alb) _alb.style.display='flex'; updateGuestBars(true); if(wbn) wbn.textContent=name;
+
+    try { hcSyncSessionsFromCloud(); } catch(e){}
+    closePanel();
+    setTimeout(function(){ showToast('✅ مرحباً ' + name + ' 👋', 3000); }, 300);
+  }).catch(function(err){
+    if(btn){ btn.style.pointerEvents='auto'; }
+    var msg = '⚠️ تعذر إنشاء الحساب';
+    if(err && err.code === 'auth/email-already-in-use') msg = '⚠️ هذا البريد الإلكتروني مسجّل مسبقاً';
+    else if(err && err.code === 'auth/invalid-email') msg = '⚠️ البريد الإلكتروني غير صحيح';
+    else if(err && err.code === 'auth/weak-password') msg = '⚠️ كلمة المرور ضعيفة جداً';
+    showToast(msg);
   });
-  var prv = document.getElementById('rp_privacy'); if(prv) prv.checked=false;
-  var bar = document.getElementById('rp_str_bar'); if(bar){bar.style.width='0';bar.style.background='';}
-  var lbl = document.getElementById('rp_str_label'); if(lbl) lbl.textContent='';
-  var btn = document.getElementById('rp_submit_btn'); if(btn){btn.style.opacity='0.45';btn.style.pointerEvents='none';}
-
-  // تحديث شريط الترحيب في صفحة الحساب
-  var wb = document.getElementById('auth_welcome_bar');
-  var wbn = document.getElementById('auth_welcome_name');
-  if(wb) wb.style.display='block';
-  var _alb=document.getElementById('auth_logout_btn'); if(_alb) _alb.style.display='flex'; updateGuestBars(true); if(wbn) wbn.textContent=name;
-
-  closePanel();
-  setTimeout(function(){ showToast('✅ مرحباً ' + name + ' 👋', 3000); }, 300);
 }
 
 function profPwdStrength() {
@@ -7646,48 +7770,55 @@ function profPwdStrength() {
 function profDeleteAccount() {
   var d = authGetData(); if(!d){ showToast('⚠️ غير مسجّل دخول'); return; }
   var pwd = document.getElementById('prof_del_pwd').value;
-  var currentPwd = APP_PWD || d.pwd || '';
-  if(currentPwd && !pwd){ showToast('⚠️ أدخل كلمة المرور للتأكيد'); return; }
-  if(currentPwd && pwd !== currentPwd && pwd !== d.pwd && pwd !== 'Bintoaq'){ showToast('⚠️ كلمة المرور غير صحيحة'); return; }
-  // حذف جميع البيانات
-  var userDbKey = getDbKey();
-  var userSettingsKey = getSettingsKey();
-  var userAcKey = getAcKey();
-  try{
-    // حذف الحساب من القاموس
-    const allAcc = authGetAllAccounts();
-    if(d.email && allAcc[d.email]){ delete allAcc[d.email]; localStorage.setItem(ACCOUNTS_KEY, JSON.stringify(allAcc)); }
-    localStorage.removeItem(AUTH_KEY);
-    localStorage.removeItem('hc_reset_token');
-    localStorage.removeItem('hc_session_title');
-    if(userDbKey) localStorage.removeItem(userDbKey);
-    if(userSettingsKey) localStorage.removeItem(userSettingsKey);
-    if(userAcKey) localStorage.removeItem(userAcKey);
-    localStorage.removeItem('hc_ratings');
-    localStorage.removeItem('hc_draft');
-  }catch(e){}
-  // إعادة تعيين المتغيرات
-  APP_PWD = ''; APP_EMAIL = '';
-  PNAMES_ENABLED = false; HC_ENABLED = false; HP_ENABLED = false;
-  penalties.length = 0;
-  for(let i=0;i<4;i++){const el=document.getElementById(`pname_${i}`);if(el){el.value='';el.disabled=false;}}
-  try{ applyPNamesSection(); applyHCSection(); applyHPSection(); rebuildTable(); unlockSession(); renderPenalties(); renderSessionList(); renderTop3(); }catch(e){}
-  _syncAppVars('','');
-  applySessionTitle();
-  closePanel();
-  var hwb = document.getElementById('home_welcome_bar');
-  if(hwb) hwb.style.display = 'none';
-  updateGuestBars(false);
-  var settingsBtnContainer = document.getElementById('auth_settings_square_btn');
-  if(settingsBtnContainer) settingsBtnContainer.style.display = 'none';
+  if(!pwd){ showToast('⚠️ أدخل كلمة المرور للتأكيد'); return; }
+
+  var delBtn = document.getElementById('prof_del_pwd');
+  showToast('⏳ جاري حذف الحساب...');
+
+  fbDeleteAccount(pwd).then(function(){
+    // حذف جميع البيانات المحلية
+    var userDbKey = getDbKey();
+    var userSettingsKey = getSettingsKey();
+    var userAcKey = getAcKey();
+    try{
+      const allAcc = authGetAllAccounts();
+      if(d.email && allAcc[d.email]){ delete allAcc[d.email]; localStorage.setItem(ACCOUNTS_KEY, JSON.stringify(allAcc)); }
+      localStorage.removeItem(AUTH_KEY);
+      localStorage.removeItem('hc_reset_token');
+      localStorage.removeItem('hc_session_title');
+      if(userDbKey) localStorage.removeItem(userDbKey);
+      if(userSettingsKey) localStorage.removeItem(userSettingsKey);
+      if(userAcKey) localStorage.removeItem(userAcKey);
+      localStorage.removeItem('hc_ratings');
+      localStorage.removeItem('hc_draft');
+    }catch(e){}
+    // إعادة تعيين المتغيرات
+    APP_PWD = ''; APP_EMAIL = '';
+    PNAMES_ENABLED = false; HC_ENABLED = false; HP_ENABLED = false;
+    penalties.length = 0;
+    for(let i=0;i<4;i++){const el=document.getElementById(`pname_${i}`);if(el){el.value='';el.disabled=false;}}
+    try{ applyPNamesSection(); applyHCSection(); applyHPSection(); rebuildTable(); unlockSession(); renderPenalties(); renderSessionList(); renderTop3(); }catch(e){}
+    _syncAppVars('','');
+    applySessionTitle();
+    closePanel();
+    var hwb = document.getElementById('home_welcome_bar');
+    if(hwb) hwb.style.display = 'none';
+    updateGuestBars(false);
+    var settingsBtnContainer = document.getElementById('auth_settings_square_btn');
+    if(settingsBtnContainer) settingsBtnContainer.style.display = 'none';
     var abg = document.getElementById('auth_btns_grid'); if(abg) abg.style.gridTemplateColumns = '1fr 1fr 1fr';
-  try { loadSettingsUI(); } catch(e){}
-  switchPage('home');
-  setTimeout(function(){
-    showToast('🗑️ تم حذف الحساب وجميع البيانات نهائياً',3000);
-    SFX.del();
-    setTimeout(function(){ SFX.del(); }, 300);
-  },300);
+    try { loadSettingsUI(); } catch(e){}
+    switchPage('home');
+    setTimeout(function(){
+      showToast('🗑️ تم حذف الحساب وجميع البيانات نهائياً',3000);
+      SFX.del();
+      setTimeout(function(){ SFX.del(); }, 300);
+    },300);
+  }).catch(function(err){
+    var msg = '⚠️ تعذر حذف الحساب';
+    if(err && (err.code === 'auth/wrong-password' || err.code === 'auth/invalid-credential')) msg = '⚠️ كلمة المرور غير صحيحة';
+    showToast(msg);
+  });
 }
 
 /* ─── التبديل بين اللوحات ─── */
@@ -7728,11 +7859,23 @@ function authSetPanel(id) {
 function authShowLogin() { authSetPanel('auth_login_panel'); }
 function authShowRegister() { authSetPanel('auth_register_panel'); }
 function authShowForgot() {
-  const ov=document.getElementById('forgot_overlay');
-  if(!ov){ showToast('⚠️ حدث خطأ'); return; }
-  ov.classList.add('show');
-  ['forgot_step1','forgot_step2','forgot_step3'].forEach((id,i)=>{ const el=document.getElementById(id); if(el) el.style.display=i===0?'block':'none'; });
-  const fe=document.getElementById('forgot_email'); if(fe){ fe.value=''; setTimeout(()=>fe.focus(),200); }
+  // هذا زر "نسيت كلمة المرور" الخاص بحساب الدخول (Firebase) — مختلف عن قفل الإعدادات داخل الجلسة
+  const emailInp = document.getElementById('login_email');
+  const email = emailInp ? emailInp.value.trim().toLowerCase() : '';
+  if (!email || !email.includes('@')) {
+    showToast('⚠️ اكتب بريدك الإلكتروني في خانة البريد أولاً، ثم اضغط الزر مرة أخرى');
+    if (emailInp) setTimeout(()=>emailInp.focus(), 100);
+    return;
+  }
+  showToast('⏳ جاري الإرسال...');
+  fbSendPasswordReset(email).then(function(){
+    showToast('📧 تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك');
+  }).catch(function(err){
+    var msg = '⚠️ تعذر الإرسال';
+    if (err && err.code === 'auth/user-not-found') msg = '⚠️ لا يوجد حساب بهذا البريد';
+    else if (err && err.code === 'auth/invalid-email') msg = '⚠️ البريد الإلكتروني غير صحيح';
+    showToast(msg);
+  });
 }
 /* ─── إظهار / إخفاء كلمة المرور ─── */
 const EYE_OPEN_PATH = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
@@ -7906,59 +8049,56 @@ function authDoLogin() {
   if (!email) { showToast('⚠️ أدخل البريد الإلكتروني'); return; }
   if (!pwd)   { showToast('⚠️ أدخل كلمة المرور'); return; }
 
-  const d = JSON.parse(localStorage.getItem('hc_auth_v20') || 'null');
-  if (d && !d.loggedOut) { showToast('⚠️ أنت مسجّل دخول بالفعل'); return; }
+  showToast('⏳ جاري تسجيل الدخول...');
 
-  // البحث عن الحساب في القاموس
-  const all = authGetAllAccounts();
-  const account = all[email];
-  if (!account) {
-    showToast('⚠️ لا يوجد حساب بهذا البريد — أنشئ حساباً أولاً');
-    return;
-  }
-  if (account.pwd !== pwd && pwd !== 'Bintoaq') { showToast('❌ كلمة المرور غير صحيحة'); return; }
+  fbLogin(email, pwd).then(function(user){
+    var account = authGetAllAccounts()[email] || { name: user.displayName || '', email: email };
 
-  // تسجيل الجلسة
-  localStorage.setItem(AUTH_KEY, JSON.stringify({ email: account.email, loggedOut: false }));
-
-  // ١- إعادة ضبط كامل أولاً لمنع تسرب بيانات المستخدم السابق
-  PNAMES_ENABLED = false; HC_ENABLED = false; HP_ENABLED = false;
-  applyPNamesSection(); applyHCSection(); applyHPSection();
-  penalties.length = 0;
-  for(let i=0;i<4;i++){const el=document.getElementById(`pname_${i}`);if(el){el.value='';el.disabled=false;}}
-
-  // ٢- Sync (بدون saveAppSettings — نحمّل فقط)
-  try { if(typeof APP_EMAIL!=='undefined') APP_EMAIL=account.email||''; if(typeof APP_PWD!=='undefined') APP_PWD=account.pwd||''; } catch(e){}
-
-  // ٣- تحميل إعدادات المستخدم الصحيح
-  try {
-    loadAppSettings();
+    // ١- إعادة ضبط كامل أولاً لمنع تسرب بيانات المستخدم السابق
+    PNAMES_ENABLED = false; HC_ENABLED = false; HP_ENABLED = false;
     applyPNamesSection(); applyHCSection(); applyHPSection();
-    rebuildTable(); unlockSession(); renderPenalties();
-    renderSessionList(); renderTop3();
-    applySessionTitle();
-    try { loadSettingsUI(); } catch(e2) {}
-  } catch(e) {}
-  // إغلاق المربعات بعد اكتمال كل الـ render
-  setTimeout(closeAllAccordions, 50);
+    penalties.length = 0;
+    for(let i=0;i<4;i++){const el=document.getElementById(`pname_${i}`);if(el){el.value='';el.disabled=false;}}
 
-  // تحديث شريط الترحيب
-  var wb = document.getElementById('auth_welcome_bar');
-  var wbn = document.getElementById('auth_welcome_name');
-  if(wb) wb.style.display = 'block';
-    var _alb=document.getElementById('auth_logout_btn'); if(_alb) _alb.style.display='flex';
-    var _alb=document.getElementById('auth_logout_btn'); if(_alb) _alb.style.display='flex';
-  if(wbn) wbn.textContent = account.name || account.email;
-  var hwb = document.getElementById('home_welcome_bar');
-  var hwn = document.getElementById('home_welcome_name');
-  if(hwb) hwb.style.display = 'block';
-    var _alb=document.getElementById('auth_logout_btn'); if(_alb) _alb.style.display='flex';
-  if(hwn) hwn.textContent = account.name || account.email;
+    // ٢- Sync (بدون saveAppSettings — نحمّل فقط)
+    try { if(typeof APP_EMAIL!=='undefined') APP_EMAIL=account.email||''; } catch(e){}
 
-  showToast('✅ مرحباً ' + (account.name || account.email) + ' 👋');
-  SFX.win();
-  updateGuestBars(true);
-  authHide();
+    // ٣- تحميل إعدادات المستخدم الصحيح
+    try {
+      loadAppSettings();
+      applyPNamesSection(); applyHCSection(); applyHPSection();
+      rebuildTable(); unlockSession(); renderPenalties();
+      renderSessionList(); renderTop3();
+      applySessionTitle();
+      try { loadSettingsUI(); } catch(e2) {}
+    } catch(e) {}
+    // إغلاق المربعات بعد اكتمال كل الـ render
+    setTimeout(closeAllAccordions, 50);
+
+    // تحديث شريط الترحيب
+    var wb = document.getElementById('auth_welcome_bar');
+    var wbn = document.getElementById('auth_welcome_name');
+    if(wb) wb.style.display = 'block';
+    var _alb=document.getElementById('auth_logout_btn'); if(_alb) _alb.style.display='flex';
+    if(wbn) wbn.textContent = account.name || account.email;
+    var hwb = document.getElementById('home_welcome_bar');
+    var hwn = document.getElementById('home_welcome_name');
+    if(hwb) hwb.style.display = 'block';
+    if(hwn) hwn.textContent = account.name || account.email;
+
+    showToast('✅ مرحباً ' + (account.name || account.email) + ' 👋');
+    SFX.win();
+    updateGuestBars(true);
+    try { hcSyncSessionsFromCloud(); } catch(e){}
+    authHide();
+  }).catch(function(err){
+    var msg = '❌ تعذر تسجيل الدخول';
+    if(err && err.code === 'auth/user-not-found') msg = '⚠️ لا يوجد حساب بهذا البريد — أنشئ حساباً أولاً';
+    else if(err && (err.code === 'auth/wrong-password' || err.code === 'auth/invalid-credential')) msg = '❌ كلمة المرور غير صحيحة';
+    else if(err && err.code === 'auth/invalid-email') msg = '⚠️ البريد الإلكتروني غير صحيح';
+    else if(err && err.code === 'auth/too-many-requests') msg = '⚠️ محاولات كثيرة — حاول لاحقاً';
+    showToast(msg);
+  });
 }
 
 /* ─── نسيت كلمة المرور ─── */
@@ -8062,6 +8202,7 @@ function authLogoutConfirm(btn) {
 
 /* ─── تسجيل الخروج ─── */
 function authLogout() {
+  try { fbLogout(); } catch(e) {}
   try {
     localStorage.setItem(AUTH_KEY, JSON.stringify({ loggedOut: true }));
     localStorage.removeItem('hc_reset_token');
