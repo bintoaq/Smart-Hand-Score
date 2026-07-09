@@ -1790,7 +1790,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.5.4</span>
+        <span style="font-size:10px;color:var(--red);">V5.5.6</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1815,7 +1815,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.5.4</span>
+        <span style="font-size:10px;color:var(--red);">V5.5.6</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1836,7 +1836,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.5.4</span>
+        <span style="font-size:10px;color:var(--red);">V5.5.6</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1871,7 +1871,7 @@ window.addEventListener('load', function(){
   <div style="text-align:center;">
     <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
     <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-    <span style="font-size:10px;color:var(--red);">V5.5.4</span>
+    <span style="font-size:10px;color:var(--red);">V5.5.6</span>
     <span style="font-size:10px;color:var(--red);"> · 2026</span>
   </div>
 </div>
@@ -2456,7 +2456,7 @@ function toggleInfoBox(){
             <div style="font-family:'Tajawal',sans-serif;font-size:7px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
             <div style="font-family:'Tajawal',sans-serif;font-size:7px;color:rgba(255,255,255,0.5);margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
             <div style="height:1px;background:rgba(200,168,75,0.5);margin-bottom:3px;"></div>
-            <div style="font-size:7px;color:var(--red);">V5.5.4 · 2026</div>
+            <div style="font-size:7px;color:var(--red);">V5.5.6 · 2026</div>
           </div>
 
           <!-- وسط: شعار فقط -->
@@ -2506,7 +2506,7 @@ function toggleInfoBox(){
       <div style="text-align:center;">
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.5.4</span>
+        <span style="font-size:10px;color:var(--red);">V5.5.6</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -2605,23 +2605,18 @@ function toggleInfoBox(){
           <script>
           function showPremiumMsg(){
             SFX && SFX.click && SFX.click();
+            // بعد تسجيل الدخول: انتقل مباشرة لبانل الاشتراك/الدفع
+            if (typeof authGetData === 'function' && authGetData()) {
+              openPanel('subscribe');
+              return;
+            }
+            // قبل تسجيل الدخول: أظهر رسالة تطلب إنشاء حساب أولاً
             var t=document.createElement('div');
             t.textContent='سجّل حساباً جديداً واشترك في النسخة المدفوعة';
             t.style.cssText='position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:rgba(30,20,5,0.97);border:1.5px solid rgba(212,168,67,0.6);color:var(--gold);font-family:Cairo,sans-serif;font-weight:700;font-size:13px;padding:12px 20px;border-radius:14px;z-index:9999;text-align:center;max-width:280px;box-shadow:0 4px 18px rgba(0,0,0,0.5);white-space:normal;line-height:1.5;';
             document.body.appendChild(t);
             setTimeout(function(){t.style.transition='opacity .4s';t.style.opacity='0';setTimeout(function(){t.remove();},420);},2800);
           }
-          // بعد تسجيل الدخول: أبقِ الزر يعمل ولكن غير الأيقونة فقط
-          document.addEventListener('authStateChanged',function(e){
-            var btn=document.getElementById('btn_premium');
-            if(!btn) return;
-            var icon=btn.querySelector('span');
-            if(e.detail && e.detail.loggedIn){
-              icon.textContent='⭐';
-            } else {
-              icon.textContent='⭐';
-            }
-          });
           </script>
 
           <!-- الدعم -->
@@ -3687,7 +3682,7 @@ function toggleInfoBox(){
           <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:13px;color:var(--gold);margin-bottom:3px;">قيد الهاند الذكي</div>
           <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
           <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-          <span class="cr-version" style="font-size:10px;color:var(--red);">V5.5.4</span>
+          <span class="cr-version" style="font-size:10px;color:var(--red);">V5.5.6</span>
           <span style="font-size:10px;color:var(--red);"> · 2026</span>
         </div>
       </div>
@@ -6021,8 +6016,7 @@ function loadSettingsUI(){
   if (authData) {
     if(profSec)  profSec.style.display  = 'block';
     if(profHint) profHint.style.display = 'none';
-    const settingsBtnContainer = document.getElementById('auth_settings_square_btn');
-    if(settingsBtnContainer) settingsBtnContainer.style.display = 'flex';
+    _setSettingsBtnVisible(true);
     var abg = document.getElementById('auth_btns_grid'); if(abg) abg.style.gridTemplateColumns = '1fr 1fr';
     if(authGuard) authGuard.style.display = 'block';
     var pn = document.getElementById('prof_name');
@@ -6044,8 +6038,7 @@ function loadSettingsUI(){
     if(profSec)  profSec.style.display  = 'none';
     if(profHint) profHint.style.display = 'block';
     if(authGuard) authGuard.style.display = 'none';
-    const settingsBtnContainer = document.getElementById('auth_settings_square_btn');
-    if(settingsBtnContainer) settingsBtnContainer.style.display = 'none';
+    _setSettingsBtnVisible(false);
     var abg = document.getElementById('auth_btns_grid'); if(abg) abg.style.gridTemplateColumns = '1fr 1fr 1fr';
   }
 
@@ -6870,7 +6863,7 @@ function doResetDefaults(){
     var _alb=document.getElementById('auth_logout_btn'); if(_alb) _alb.style.display='none';
     var _wb=document.getElementById('auth_welcome_bar'); if(_wb) _wb.style.display='none';
     var _hwb=document.getElementById('home_welcome_bar'); if(_hwb) _hwb.style.display='none';
-    var _as=document.getElementById('auth_settings_square_btn'); if(_as) _as.style.display='none';
+    _setSettingsBtnVisible(false);
     updateGuestBars(false);
     applySessionTitle();
   } catch(e){}
@@ -7321,7 +7314,7 @@ function rtSubmit(){
     'الجوانب: ' + tagStr + '\n' +
     'التعليق: ' + (comment || 'لا يوجد') + '\n' +
     'التاريخ: ' + date + '\n\n' +
-    'Smart Hand Score V5.5.4'
+    'Smart Hand Score V5.5.6'
   );
   var subject = encodeURIComponent('تقييم — ' + stars + ' نجوم');
   var mailtoLink = 'mailto:sultan@handcards.app?subject=' + subject + '&body=' + mailBody;
@@ -7486,7 +7479,7 @@ document.getElementById('settings_panel').addEventListener('transitionend', _upd
 
 <script>
 /* ═══════════════════════════════════════════════
-   AUTH SYSTEM — HandCards V5.5.4
+   AUTH SYSTEM — HandCards V5.5.6
    البيانات تُحفظ في localStorage تحت مفتاح hc_auth
 ═══════════════════════════════════════════════ */
 
@@ -7933,8 +7926,6 @@ function profDeleteAccount() {
     var hwb = document.getElementById('home_welcome_bar');
     if(hwb) hwb.style.display = 'none';
     updateGuestBars(false);
-    var settingsBtnContainer = document.getElementById('auth_settings_square_btn');
-    if(settingsBtnContainer) settingsBtnContainer.style.display = 'none';
     var abg = document.getElementById('auth_btns_grid'); if(abg) abg.style.gridTemplateColumns = '1fr 1fr 1fr';
     try { loadSettingsUI(); } catch(e){}
     switchPage('home');
@@ -8224,8 +8215,8 @@ function authDoLogin() {
     authHide();
   }).catch(function(err){
     var msg = '❌ تعذر تسجيل الدخول';
-    if(err && err.code === 'auth/user-not-found') msg = '⚠️ لا يوجد حساب بهذا البريد — أنشئ حساباً أولاً';
-    else if(err && (err.code === 'auth/wrong-password' || err.code === 'auth/invalid-credential')) msg = '❌ البريد أو كلمة المرور غير صحيحة — أو أنشئ حساباً جديداً';
+    if(err && err.code === 'auth/user-not-found') msg = '⚠️ لا يوجد حساب بهذا البريد';
+    else if(err && (err.code === 'auth/wrong-password' || err.code === 'auth/invalid-credential')) msg = '❌ البريد أو كلمة المرور غير صحيحة';
     else if(err && err.code === 'auth/invalid-email') msg = '⚠️ البريد الإلكتروني غير صحيح';
     else if(err && err.code === 'auth/too-many-requests') msg = '⚠️ محاولات كثيرة — حاول لاحقاً';
     showToast(msg);
@@ -8416,15 +8407,24 @@ function authShowFromNav() {
   if(logA) logA.classList.remove('open');
   if(d){ if(regP) regP.style.display='none'; }
   else { if(regP) regP.style.display='block'; }
+
+  // امسح جميع حقول تسجيل الدخول/التسجيل إذا لم يكن هناك حساب مسجَّل دخوله حالياً
+  // (يمنع بقاء بيانات دخول حساب محذوف أو سابق ظاهرة في الحقول)
+  if(!d){
+    const clearIds = ['reg_name','reg_council','reg_email','reg_pwd','reg_pwd2','login_email','login_pwd',
+                      'forgot_email','forgot_code','forgot_new_pwd','forgot_new_pwd2',
+                      'change_email','change_old','change_new','change_new2',
+                      'reset_new','reset_new2'];
+    clearIds.forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+  }
   
   // تحديث ظهور زر الإعدادات
-  var _ssb = document.getElementById('auth_settings_square_btn');
   var _abg = document.getElementById('auth_btns_grid');
   if (d) {
-    if(_ssb) _ssb.style.display = 'flex';
+    _setSettingsBtnVisible(true);
     if(_abg) _abg.style.gridTemplateColumns = '1fr 1fr';
   } else {
-    if(_ssb) _ssb.style.display = 'none';
+    _setSettingsBtnVisible(false);
     if(_abg) _abg.style.gridTemplateColumns = '1fr 1fr 1fr';
   }
   
@@ -8432,6 +8432,13 @@ function authShowFromNav() {
 }
 
 /* ── Guest bar visibility helper ── */
+// تغيير ظهور زر الإعدادات المربّع فقط عند الحاجة الفعلية (منع إعادة تشغيل أنيميشن التوهج بدون داعٍ)
+function _setSettingsBtnVisible(show) {
+  var el = document.getElementById('auth_settings_square_btn');
+  if (!el) return;
+  var want = show ? 'flex' : 'none';
+  if (el.style.display !== want) el.style.display = want;
+}
 function updateGuestBars(isLoggedIn) {
   var hg = document.getElementById('home_guest_bar');
   var ag = document.getElementById('auth_guest_bar');
@@ -8440,9 +8447,8 @@ function updateGuestBars(isLoggedIn) {
   if(hg)  hg.style.display  = isLoggedIn ? 'none' : 'block';
   if(ag)  ag.style.display  = isLoggedIn ? 'none' : 'block';
   if(aga) aga.style.display = isLoggedIn ? 'none' : 'flex';
-  var _ssb2 = document.getElementById('auth_settings_square_btn');
+  _setSettingsBtnVisible(isLoggedIn);
   var _abg2 = document.getElementById('auth_btns_grid');
-  if(_ssb2) _ssb2.style.display = isLoggedIn ? 'flex' : 'none';
   if(_abg2) _abg2.style.gridTemplateColumns = isLoggedIn ? '1fr 1fr' : '1fr 1fr 1fr';
   var aw = document.getElementById('auth_welcome_bar');
   if(aw) aw.style.display = isLoggedIn ? 'block' : 'none';
@@ -8765,7 +8771,7 @@ function supSubmit(){
     'البريد: ' + email + '\n' +
     'نوع الطلب: ' + typeLabel + '\n\n' +
     'الرسالة:\n' + msg + '\n\n' +
-    'Smart Hand Score V5.5.4'
+    'Smart Hand Score V5.5.6'
   );
   window.location.href = 'mailto:support@handcards.app?subject=' + subject + '&body=' + body;
 
@@ -8824,7 +8830,7 @@ function shareReport(){
 
   lines.push('');
   lines.push('─────────────────────');
-  lines.push('Smart Hand Score V5.5.4 · قيد الهاند الذكي');
+  lines.push('Smart Hand Score V5.5.6 · قيد الهاند الذكي');
 
   var text = lines.join('\n');
 
@@ -9108,7 +9114,7 @@ function shareCertText(){
     intro + ' بأن اللاعب ' + fullName + '\n' +
     bodyText + '\n\n' +
     'قيد الهاند الذكي · جميع الحقوق محفوظة\n' +
-    'تصميم سلطان بن طوق المري · V5.5.4 · 2026';
+    'تصميم سلطان بن طوق المري · V5.5.6 · 2026';
 
   if(navigator.share){
     navigator.share({ title: 'شهادة محترف — ' + fullName, text: text })
