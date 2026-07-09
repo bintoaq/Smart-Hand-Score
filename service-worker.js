@@ -1,10 +1,11 @@
 /* Smart Hand Score — Service Worker */
 /* عند كل رفع نسخة جديدة من التطبيق: غيّر رقم CACHE أدناه (مثلاً v4.10) حتى تُمسح النسخة القديمة من أجهزة المستخدمين تلقائياً */
-const CACHE = 'smart-hand-score-v5.5.6';
+const CACHE = 'smart-hand-score-v5.6';
 
 const APP_SHELL = [
   './',
   './index.html',
+  './privacy-policy.html',
   './manifest.json',
   './logo.webp',
   './math-logo.png',
