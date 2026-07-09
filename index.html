@@ -1007,7 +1007,7 @@ button.btn-app-gold:disabled{
   color: var(--text);
 }
 .sub-table td:first-child { text-align: right; padding-right: 10px; color: #ddd; font-weight: 700; font-size: 10.5px; }
-.sub-table td:nth-child(2) { color: #9a9a9a; }
+.sub-table td:nth-child(2) { color: #9a9a9a; font-weight: 800; }
 .sub-table tr:nth-child(even) td { background: var(--card2); }
 
 /* ══ HIND LIST EDITOR ══ */
@@ -3431,6 +3431,26 @@ function toggleInfoBox(){
 
 
     
+    <!-- ④ آخر التحديثات -->
+    <div class="info-section">
+      <span class="info-gf-corner info-gf-tr"></span><span class="info-gf-corner info-gf-tl"></span>
+      <span class="info-gf-corner info-gf-br"></span><span class="info-gf-corner info-gf-bl"></span>
+      <div class="info-sec-toggle closed" onclick="toggleInfoSec(this)" style="background:rgba(212,168,67,0.05);">
+        <span class="info-sec-arrow">▼</span>
+        <span class="info-sec-toggle-title">آخر التحديثات</span>
+        <span class="info-sec-toggle-icon">🆕</span>
+      </div>
+      <div class="info-sec-body">
+        <div class="info-card">
+          <div class="info-card-body">
+            <strong style="color:var(--gold)">V5.6.1</strong><br>
+            • اعتماد الدرهم الإماراتي عملةً لخطط الاشتراك بدلاً من الريال<br>
+            • تحسين تصميم جدول المميزات وخطط الاشتراك ليظهر بشكل أوضح وأكثر تناسقاً<br>
+            • تحديث سياسة الخصوصية وإتاحتها كصفحة مستقلة داخل التطبيق
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>
@@ -3736,29 +3756,29 @@ function toggleInfoBox(){
         </tbody>
       </table>
     </div>
-    <div style="height:18px;"></div>
+    <div style="height:12px;"></div>
 
     <!-- خطط الاشتراك -->
-    <div style="font-family:'Cairo',sans-serif;font-size:14px;font-weight:900;color:var(--gold);text-align:center;margin-bottom:12px;">
+    <div style="font-family:'Cairo',sans-serif;font-size:14px;font-weight:900;color:var(--gold);text-align:center;margin-bottom:8px;">
       🎁 جرّب مجاناً ٧ أيام، ثم اختر خطتك
     </div>
     <div style="display:flex;gap:10px;">
-      <div style="flex:1;background:linear-gradient(135deg,rgba(212,168,67,0.14),rgba(212,168,67,0.03));border:1.5px solid rgba(212,168,67,0.45);border-radius:14px;padding:14px 10px;text-align:center;">
-        <div style="font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;color:#ccc;margin-bottom:6px;">شهري</div>
-        <div style="font-family:'Cairo',sans-serif;font-size:20px;font-weight:900;color:var(--gold);">١٤.٩٩ <span style="font-size:12px;">ريال</span></div>
-        <div style="font-family:'Tajawal',sans-serif;font-size:10px;color:#999;margin-top:4px;">شهرياً بعد التجربة</div>
+      <div style="flex:1;background:linear-gradient(135deg,rgba(212,168,67,0.14),rgba(212,168,67,0.03));border:1.5px solid rgba(212,168,67,0.45);border-radius:14px;padding:8px 10px;text-align:center;">
+        <div style="font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;color:#ccc;margin-bottom:4px;">شهري</div>
+        <div style="font-family:'Cairo',sans-serif;font-size:20px;font-weight:900;color:var(--gold);">١٤.٩٩ <span style="font-size:12px;">درهم</span></div>
+        <div style="font-family:'Tajawal',sans-serif;font-size:10px;color:#999;margin-top:2px;">شهرياً بعد التجربة</div>
       </div>
-      <div style="flex:1;background:linear-gradient(135deg,rgba(212,168,67,0.22),rgba(212,168,67,0.05));border:2px solid var(--gold);border-radius:14px;padding:14px 10px;text-align:center;position:relative;">
-        <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--gold);color:#0F0F0F;font-family:'Cairo',sans-serif;font-size:10px;font-weight:900;padding:2px 10px;border-radius:8px;white-space:nowrap;">وفّر ٤٥٪</div>
-        <div style="font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;color:#ccc;margin-bottom:6px;">سنوي</div>
-        <div style="font-family:'Cairo',sans-serif;font-size:20px;font-weight:900;color:var(--gold);">٩٩ <span style="font-size:12px;">ريال</span></div>
-        <div style="font-family:'Tajawal',sans-serif;font-size:10px;color:#999;margin-top:4px;">سنوياً بعد التجربة</div>
+      <div style="flex:1;background:linear-gradient(135deg,rgba(212,168,67,0.22),rgba(212,168,67,0.05));border:2px solid var(--gold);border-radius:14px;padding:8px 10px;text-align:center;position:relative;">
+        <div style="position:absolute;top:-9px;right:8px;background:var(--gold);color:#0F0F0F;font-family:'Cairo',sans-serif;font-size:9px;font-weight:900;padding:2px 8px;border-radius:8px;white-space:nowrap;">وفّر ٤٥٪</div>
+        <div style="font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;color:#ccc;margin-bottom:4px;">سنوي</div>
+        <div style="font-family:'Cairo',sans-serif;font-size:20px;font-weight:900;color:var(--gold);">٩٩ <span style="font-size:12px;">درهم</span></div>
+        <div style="font-family:'Tajawal',sans-serif;font-size:10px;color:#999;margin-top:2px;">سنوياً بعد التجربة</div>
       </div>
     </div>
-    <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#888;text-align:center;margin-top:10px;line-height:1.6;">
+    <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#888;text-align:center;margin-top:8px;line-height:1.6;">
       يُسحب المبلغ عبر حساب Apple الخاص بك بعد انتهاء التجربة المجانية، ويمكن الإلغاء في أي وقت من إعدادات الاشتراكات بجهازك.
     </div>
-    <div style="height:20px;"></div>
+    <div style="height:14px;"></div>
   </div>
 </div>
 
