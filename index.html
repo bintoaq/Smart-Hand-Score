@@ -1231,7 +1231,7 @@ button.btn-app-gold:disabled{
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.78);
-  z-index: 9800;
+  z-index: 10050;
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(4px);
@@ -1244,6 +1244,9 @@ button.btn-app-gold:disabled{
   border-radius: 20px;
   width: 100%;
   max-width: 340px;
+  max-height: calc(100vh - 40px);
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   position: relative;
 }
@@ -1290,6 +1293,7 @@ button.btn-app-gold:disabled{
   font-weight: 500;
   color: #ffffff;
   line-height: 2.1;
+  overflow-y: auto;
 }
 .tip-body .tip-line {
   display: flex;
@@ -1800,7 +1804,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.6.3</span>
+        <span style="font-size:10px;color:var(--red);">V5.7.1</span>
         <span style="font-size:10px;color:var(--red);"> · آخر تحديث: يوليو 2026</span>
       </div>
     </div>
@@ -1825,7 +1829,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.6.3</span>
+        <span style="font-size:10px;color:var(--red);">V5.7.1</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1846,7 +1850,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.6.3</span>
+        <span style="font-size:10px;color:var(--red);">V5.7.1</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1881,7 +1885,7 @@ window.addEventListener('load', function(){
   <div style="text-align:center;">
     <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
     <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-    <span style="font-size:10px;color:var(--red);">V5.6.3</span>
+    <span style="font-size:10px;color:var(--red);">V5.7.1</span>
     <span style="font-size:10px;color:var(--red);"> · 2026</span>
   </div>
 </div>
@@ -2466,7 +2470,7 @@ function toggleInfoBox(){
             <div style="font-family:'Tajawal',sans-serif;font-size:7px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
             <div style="font-family:'Tajawal',sans-serif;font-size:7px;color:rgba(255,255,255,0.5);margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
             <div style="height:1px;background:rgba(200,168,75,0.5);margin-bottom:3px;"></div>
-            <div style="font-size:7px;color:var(--red);">V5.6.3 · 2026</div>
+            <div style="font-size:7px;color:var(--red);">V5.7.1 · 2026</div>
           </div>
 
           <!-- وسط: شعار فقط -->
@@ -2516,7 +2520,7 @@ function toggleInfoBox(){
       <div style="text-align:center;">
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.6.3</span>
+        <span style="font-size:10px;color:var(--red);">V5.7.1</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -3467,7 +3471,15 @@ function toggleInfoBox(){
       <div class="info-sec-body">
         <div class="info-card">
           <div class="info-card-body">
-            <strong style="color:var(--gold)">V5.6.3</strong><br>
+            <strong style="color:var(--gold)">V5.7.1</strong><br>
+            • إصلاح ظهور ملاحظات جدول الأسماء في صفحة الجولات بحيث لا تختفي أسفلها تحت الشريط الثابت<br>
+            • إضافة كلمة "الذكي" لعنوان تقرير الإحصائيات عند إرساله من صفحة السجل<br>
+            • ربط زر "نسيت كلمة المرور" عند حذف جلسة في الأرشيف بنفس آلية رابط إعادة التعيين المستخدمة في مربع تسجيل الدخول بصفحة الحساب، بدلاً من إرسال رمز تحقق
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-body">
+            <strong style="color:var(--gold)">V5.7</strong><br>
             • تقوية إطار مربعات صفحة المعلومات ليطابق إطار بقية المربعات في التطبيق<br>
             • توحيد لون خلفية عناوين جميع أقسام صفحة المعلومات
           </div>
@@ -3749,7 +3761,7 @@ function toggleInfoBox(){
           <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:13px;color:var(--gold);margin-bottom:3px;">قيد الهاند الذكي</div>
           <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
           <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-          <span class="cr-version" style="font-size:10px;color:var(--red);">V5.6.3</span>
+          <span class="cr-version" style="font-size:10px;color:var(--red);">V5.7.1</span>
           <span style="font-size:10px;color:var(--red);"> · 2026</span>
         </div>
       </div>
@@ -5428,6 +5440,7 @@ function deleteSession(id){
 }
 
 function showForgotPwd(){
+  // نفس آلية زر "نسيت كلمة المرور" في مربع تسجيل الدخول بصفحة الحساب: رابط إعادة تعيين عبر Firebase مباشرة، بدون رمز تحقق
   // استخدم بيانات auth بدلاً من APP_EMAIL لتجنب مشكلة الـ scope
   let userEmail = APP_EMAIL;
   if(!userEmail){
@@ -5438,13 +5451,15 @@ function showForgotPwd(){
   }
   if(!userEmail){ showToast('⚠️ لم يتم تسجيل بريد إلكتروني — راجع الإعدادات'); return; }
   document.getElementById('pwd_overlay').classList.remove('show');
-  document.getElementById('forgot_overlay').classList.add('show');
-  document.getElementById('forgot_step1').style.display='block';
-  document.getElementById('forgot_step2').style.display='none';
-  document.getElementById('forgot_step3').style.display='none';
-  document.getElementById('forgot_email').value='';
-  document.getElementById('forgot_title').textContent='📧 استرجاع كلمة المرور';
-  setTimeout(()=>document.getElementById('forgot_email').focus(),200);
+  showToast('⏳ جاري الإرسال...');
+  fbSendPasswordReset(userEmail).then(function(){
+    showToast('📧 تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك');
+  }).catch(function(err){
+    var msg = '⚠️ تعذر الإرسال';
+    if (err && err.code === 'auth/user-not-found') msg = '⚠️ لا يوجد حساب بهذا البريد';
+    else if (err && err.code === 'auth/invalid-email') msg = '⚠️ البريد الإلكتروني غير صحيح';
+    showToast(msg);
+  });
 }
 
 function closeForgotPwd(){
@@ -7381,7 +7396,7 @@ function rtSubmit(){
     'الجوانب: ' + tagStr + '\n' +
     'التعليق: ' + (comment || 'لا يوجد') + '\n' +
     'التاريخ: ' + date + '\n\n' +
-    'Smart Hand Score V5.6.3'
+    'Smart Hand Score V5.7.1'
   );
   var subject = encodeURIComponent('تقييم — ' + stars + ' نجوم');
   var mailtoLink = 'mailto:sultan@handcards.app?subject=' + subject + '&body=' + mailBody;
@@ -7546,7 +7561,7 @@ document.getElementById('settings_panel').addEventListener('transitionend', _upd
 
 <script>
 /* ═══════════════════════════════════════════════
-   AUTH SYSTEM — HandCards V5.6.3
+   AUTH SYSTEM — HandCards V5.7.1
    البيانات تُحفظ في localStorage تحت مفتاح hc_auth
 ═══════════════════════════════════════════════ */
 
@@ -8838,7 +8853,7 @@ function supSubmit(){
     'البريد: ' + email + '\n' +
     'نوع الطلب: ' + typeLabel + '\n\n' +
     'الرسالة:\n' + msg + '\n\n' +
-    'Smart Hand Score V5.6.3'
+    'Smart Hand Score V5.7.1'
   );
   window.location.href = 'mailto:support@handcards.app?subject=' + subject + '&body=' + body;
 
@@ -8866,7 +8881,7 @@ function shareReport(){
   var built = buildFullStats();
   var lines = [];
 
-  lines.push('📊 تقرير إحصائيات قيد الهاند');
+  lines.push('📊 تقرير إحصائيات قيد الهاند الذكي');
   lines.push('📅 التاريخ: ' + built.dateStr);
   lines.push('🎮 الجلسات: ' + toAr(built.sessions.length));
   lines.push('─────────────────────');
@@ -8897,7 +8912,7 @@ function shareReport(){
 
   lines.push('');
   lines.push('─────────────────────');
-  lines.push('Smart Hand Score V5.6.3 · قيد الهاند الذكي');
+  lines.push('Smart Hand Score V5.7.1 · قيد الهاند الذكي');
 
   var text = lines.join('\n');
 
@@ -9181,7 +9196,7 @@ function shareCertText(){
     intro + ' بأن اللاعب ' + fullName + '\n' +
     bodyText + '\n\n' +
     'قيد الهاند الذكي · جميع الحقوق محفوظة\n' +
-    'تصميم سلطان بن طوق المري · V5.6.3 · 2026';
+    'تصميم سلطان بن طوق المري · V5.7.1 · 2026';
 
   if(navigator.share){
     navigator.share({ title: 'شهادة محترف — ' + fullName, text: text })
