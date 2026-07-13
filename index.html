@@ -1729,7 +1729,7 @@ nav {
 <!-- ══ شاشة البداية (Splash) ══ -->
 <div id="app_splash" style="position:fixed;inset:0;z-index:999999;background:#0F0F0F;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .7s ease;overflow:hidden;">
   <img src="./math-logo.png" alt="Smart Hand Score" style="width:min(98vw,620px);height:auto;object-fit:contain;animation:splashPop .9s ease-out, splashGlowPulse 2.6s ease-in-out .9s infinite;filter:drop-shadow(0 0 34px rgba(212,168,67,0.55)) drop-shadow(0 0 70px rgba(212,168,67,0.28));">
-  <div style="margin-top:10px;font-family:'Cairo',sans-serif;font-weight:900;font-size:17px;color:var(--gold);text-shadow:0 0 18px rgba(212,168,67,0.35);animation:splashPop .9s ease-out;">سجلها بذكاء</div>
+  <div style="margin-top:10px;font-family:'Cairo',sans-serif;font-weight:900;font-size:17px;background:linear-gradient(90deg, #a97e2c 0%, #d4a843 25%, #f8ecc0 50%, #d4a843 75%, #a97e2c 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold);filter:drop-shadow(0 0 18px rgba(212,168,67,0.45));animation:splashPop .9s ease-out, splashTaglineShine 2.6s linear .9s infinite;">قيدها بذكاء</div>
 </div>
 <!-- نغمة الترحيب: ضع ملف الصوت باسم welcome-sound.mp3 بجانب index.html -->
 <audio id="splash_sound" src="./welcome-sound.mp3" preload="auto"></audio>
@@ -1746,6 +1746,10 @@ nav {
 @keyframes splashGlowPulse {
   0%, 100% { filter:drop-shadow(0 0 34px rgba(212,168,67,0.55)) drop-shadow(0 0 70px rgba(212,168,67,0.28)); transform:scale(1); }
   50%      { filter:drop-shadow(0 0 48px rgba(212,168,67,0.85)) drop-shadow(0 0 95px rgba(212,168,67,0.45)); transform:scale(1.03); }
+}
+@keyframes splashTaglineShine {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
 }
 .app-logo-glow { animation:logoGlowPulse 3s ease-in-out infinite; }
 .welcome-reveal {
@@ -1804,7 +1808,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.7.1</span>
+        <span style="font-size:10px;color:var(--red);">V5.7.2</span>
         <span style="font-size:10px;color:var(--red);"> · آخر تحديث: يوليو 2026</span>
       </div>
     </div>
@@ -1829,7 +1833,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.7.1</span>
+        <span style="font-size:10px;color:var(--red);">V5.7.2</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1850,7 +1854,7 @@ window.addEventListener('load', function(){
         <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:12px;color:var(--gold);margin-bottom:2px;">قيد الهاند الذكي</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.7.1</span>
+        <span style="font-size:10px;color:var(--red);">V5.7.2</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -1885,7 +1889,7 @@ window.addEventListener('load', function(){
   <div style="text-align:center;">
     <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
     <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-    <span style="font-size:10px;color:var(--red);">V5.7.1</span>
+    <span style="font-size:10px;color:var(--red);">V5.7.2</span>
     <span style="font-size:10px;color:var(--red);"> · 2026</span>
   </div>
 </div>
@@ -2470,7 +2474,7 @@ function toggleInfoBox(){
             <div style="font-family:'Tajawal',sans-serif;font-size:7px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
             <div style="font-family:'Tajawal',sans-serif;font-size:7px;color:rgba(255,255,255,0.5);margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
             <div style="height:1px;background:rgba(200,168,75,0.5);margin-bottom:3px;"></div>
-            <div style="font-size:7px;color:var(--red);">V5.7.1 · 2026</div>
+            <div style="font-size:7px;color:var(--red);">V5.7.2 · 2026</div>
           </div>
 
           <!-- وسط: شعار فقط -->
@@ -2520,7 +2524,7 @@ function toggleInfoBox(){
       <div style="text-align:center;">
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
         <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-        <span style="font-size:10px;color:var(--red);">V5.7.1</span>
+        <span style="font-size:10px;color:var(--red);">V5.7.2</span>
         <span style="font-size:10px;color:var(--red);"> · 2026</span>
       </div>
     </div>
@@ -3471,6 +3475,13 @@ function toggleInfoBox(){
       <div class="info-sec-body">
         <div class="info-card">
           <div class="info-card-body">
+            <strong style="color:var(--gold)">V5.7.2</strong><br>
+            • تغيير عبارة شاشة الترحيب إلى "قيدها بذكاء" مع تأثير لمعان ذهبي متحرك يتناسق مع الشعار<br>
+            • في شهادة المحترف (إنجاز أعلى نسبة فوز)، استبدال النسبة المئوية بعبارة "المركز الأول"
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-body">
             <strong style="color:var(--gold)">V5.7.1</strong><br>
             • إصلاح ظهور ملاحظات جدول الأسماء في صفحة الجولات بحيث لا تختفي أسفلها تحت الشريط الثابت<br>
             • إضافة كلمة "الذكي" لعنوان تقرير الإحصائيات عند إرساله من صفحة السجل<br>
@@ -3761,7 +3772,7 @@ function toggleInfoBox(){
           <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:13px;color:var(--gold);margin-bottom:3px;">قيد الهاند الذكي</div>
           <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:var(--muted);margin-bottom:2px;">جميع الحقوق محفوظة</div>
           <div style="font-family:'Tajawal',sans-serif;font-size:11px;color:#ffffff;margin-bottom:4px;">تصميم سلطان بن طوق المري</div>
-          <span class="cr-version" style="font-size:10px;color:var(--red);">V5.7.1</span>
+          <span class="cr-version" style="font-size:10px;color:var(--red);">V5.7.2</span>
           <span style="font-size:10px;color:var(--red);"> · 2026</span>
         </div>
       </div>
@@ -7396,7 +7407,7 @@ function rtSubmit(){
     'الجوانب: ' + tagStr + '\n' +
     'التعليق: ' + (comment || 'لا يوجد') + '\n' +
     'التاريخ: ' + date + '\n\n' +
-    'Smart Hand Score V5.7.1'
+    'Smart Hand Score V5.7.2'
   );
   var subject = encodeURIComponent('تقييم — ' + stars + ' نجوم');
   var mailtoLink = 'mailto:sultan@handcards.app?subject=' + subject + '&body=' + mailBody;
@@ -7561,7 +7572,7 @@ document.getElementById('settings_panel').addEventListener('transitionend', _upd
 
 <script>
 /* ═══════════════════════════════════════════════
-   AUTH SYSTEM — HandCards V5.7.1
+   AUTH SYSTEM — HandCards V5.7.2
    البيانات تُحفظ في localStorage تحت مفتاح hc_auth
 ═══════════════════════════════════════════════ */
 
@@ -8853,7 +8864,7 @@ function supSubmit(){
     'البريد: ' + email + '\n' +
     'نوع الطلب: ' + typeLabel + '\n\n' +
     'الرسالة:\n' + msg + '\n\n' +
-    'Smart Hand Score V5.7.1'
+    'Smart Hand Score V5.7.2'
   );
   window.location.href = 'mailto:support@handcards.app?subject=' + subject + '&body=' + body;
 
@@ -8912,7 +8923,7 @@ function shareReport(){
 
   lines.push('');
   lines.push('─────────────────────');
-  lines.push('Smart Hand Score V5.7.1 · قيد الهاند الذكي');
+  lines.push('Smart Hand Score V5.7.2 · قيد الهاند الذكي');
 
   var text = lines.join('\n');
 
@@ -9059,8 +9070,7 @@ function renderCert(){
         return a.name.localeCompare(b.name);
       })[0];
     if(!winner) winner = players[0];
-    var pct = winner.sessions > 0 ? Math.round(winner.wins / winner.sessions * 100) : 0;
-    bodyText = 'حقق أعلى نسبة فوز <strong style="color:#fff;font-weight:900;">' + toAr(pct) + '%</strong> بـ' + toAr(winner.wins) + ' انتصار من ' + toAr(winner.sessions) + ' جلسة، وعليه أُعطيت هذه الشهادة.';
+    bodyText = 'حقق <strong style="color:#fff;font-weight:900;">المركز الأول</strong> بـ' + toAr(winner.wins) + ' انتصار من ' + toAr(winner.sessions) + ' جلسة، وعليه أُعطيت هذه الشهادة.';
   }
 
   var fullName = winner.name + (suffix ? ' ' + suffix : '');
@@ -9184,8 +9194,7 @@ function shareCertText(){
         return a.name.localeCompare(b.name);
       })[0];
     if(!winner) winner = players[0];
-    var pct2 = winner.sessions > 0 ? Math.round(winner.wins/winner.sessions*100) : 0;
-    bodyText = 'حقق أعلى نسبة فوز ' + toAr(pct2) + '% بـ' + toAr(winner.wins) + ' انتصار من ' + toAr(winner.sessions) + ' جلسة.';
+    bodyText = 'حقق المركز الأول بـ' + toAr(winner.wins) + ' انتصار من ' + toAr(winner.sessions) + ' جلسة.';
   }
 
   var fullName = winner.name + (suffix ? ' ' + suffix : '');
@@ -9196,7 +9205,7 @@ function shareCertText(){
     intro + ' بأن اللاعب ' + fullName + '\n' +
     bodyText + '\n\n' +
     'قيد الهاند الذكي · جميع الحقوق محفوظة\n' +
-    'تصميم سلطان بن طوق المري · V5.7.1 · 2026';
+    'تصميم سلطان بن طوق المري · V5.7.2 · 2026';
 
   if(navigator.share){
     navigator.share({ title: 'شهادة محترف — ' + fullName, text: text })
