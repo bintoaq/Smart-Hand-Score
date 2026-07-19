@@ -2472,7 +2472,7 @@ function toggleInfoBox(){
           <div style="text-align:center;flex:1;">
             <div style="font-family:'Cairo',sans-serif;font-weight:900;font-size:9px;color:var(--gold);margin-bottom:1px;">قيد الهاند الذكي</div>
             <div style="font-family:'Tajawal',sans-serif;font-size:7px;color:var(--muted);margin-bottom:1px;">جميع الحقوق محفوظة</div>
-            <div style="font-family:'Tajawal',sans-serif;font-size:7px;color:rgba(255,255,255,0.5);margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
+            <div style="font-family:'Tajawal',sans-serif;font-size:7px;font-weight:700;color:#ffffff;margin-bottom:3px;">تصميم سلطان بن طوق المري</div>
             <div style="height:1px;background:rgba(200,168,75,0.5);margin-bottom:3px;"></div>
             <div style="font-size:7px;color:var(--red);">V5.8.1 · 2026</div>
           </div>
@@ -5427,7 +5427,9 @@ let _deleteId=null, _deleteType=null;
 
 function deleteSession(id){
   _deleteId=id; _deleteType='session';
-  if(!APP_PWD){ showToast('⚠️ يجب تعيين كلمة مرور في الإعدادات أولاً'); return; }
+  const _authD = (typeof authGetData === 'function') ? authGetData() : null;
+  const _activePwd = (_authD && _authD.pwd) ? _authD.pwd : APP_PWD;
+  if(!_activePwd){ showToast('⚠️ يجب تعيين كلمة مرور في الإعدادات أولاً'); return; }
   const ov=document.getElementById('pwd_overlay');
   const inp=document.getElementById('pwd_inp');
   inp.value=''; ov.classList.add('show');
@@ -5540,7 +5542,9 @@ function confirmNewPwd(){
 
 function pwdConfirm(){
   const inp=document.getElementById('pwd_inp');
-  if(inp.value===APP_PWD){
+  const _authD = (typeof authGetData === 'function') ? authGetData() : null;
+  const _activePwd = (_authD && _authD.pwd) ? _authD.pwd : APP_PWD;
+  if(inp.value===_activePwd){
     SFX.del();
     if(_deleteType==='penalty'){
       removePenalty(_deleteId);
@@ -7403,7 +7407,7 @@ function rtSubmit(){
     'Smart Hand Score V5.8.1'
   );
   var subject = encodeURIComponent('تقييم — ' + stars + ' نجوم');
-  var mailtoLink = 'mailto:sultan@handcards.app?subject=' + subject + '&body=' + mailBody;
+  var mailtoLink = 'mailto:smarthandscore@icloud.com?subject=' + subject + '&body=' + mailBody;
 
   // الانتقال للبريد يتأخر قليلاً حتى يشاهد المستخدم رسالة الشكر أولاً
   setTimeout(function(){ window.location.href = mailtoLink; }, 1400);
